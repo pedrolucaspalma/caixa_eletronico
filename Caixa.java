@@ -18,7 +18,7 @@ public class Caixa{
     }
 
     public boolean verificarSeHaContaPoupancaPorCpf(String cpf){
-        for (ContaCorrente conta : listaDeContasPoupancas){
+        for (ContaPoupanca conta : listaDeContasPoupancas){
             if(conta.getCpf().equals(cpf)){
                 return true;
             }
@@ -27,12 +27,11 @@ public class Caixa{
     }
 
     public void criarContaCorrente(){
-        String cpf;
-
-        cpf = Registrador.lerString("Insira seu cpf: "); //CPF
+        String cpf = Registrador.lerString("Insira seu cpf: "); //CPF
 
         if(verificarSeHaContaCorrentePorCpf(cpf) == true){
             System.out.println("Erro! O CPF inserido já possui uma conta corrente.");
+            return;
         }
         
 /*          if(verificarSeHaContaPoupancaPorCpf( == true){
@@ -42,7 +41,7 @@ public class Caixa{
  
 
 
-        ContaCorrente conta = new ContaCorrente(
+/*         ContaCorrente conta = new ContaCorrente(
             cpf,
             Registrador.lerData("\nInsira sua data de Nascimento: "), //Data de nascimento
             Registrador.lerString("\nInsira seu email: "), //Email -------> Criar método lerEmail() no registrador <------------------------
@@ -52,5 +51,7 @@ public class Caixa{
             //gerarNumeroConta()
             );
         listaDeContasCorrentes.add(conta);
-        }
+        } 
+*/
+    }
 }
