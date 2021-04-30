@@ -17,4 +17,30 @@ public abstract class Conta {
         this.agencia = agencia;
         this.numeroDaConta = numeroDaConta;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public String getNumeroDaConta() {
+        return numeroDaConta;
+    }
 }
