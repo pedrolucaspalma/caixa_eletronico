@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Caixa{
     private ArrayList<ContaCorrente> listaDeContasCorrentes = new ArrayList<ContaCorrente>();
     private ArrayList<ContaPoupanca> listaDeContasPoupancas = new ArrayList<ContaPoupanca>();
+    private Registrador input = new Registrador();
 
     // public string gerarNumeroConta(){
         //Método que soma o tamanho dos dois arraylists de conta corrente e conta poupança
@@ -27,7 +28,7 @@ public class Caixa{
     }
 
     public void criarContaCorrente(){
-        String cpf = Registrador.lerString("Insira seu cpf: "); //CPF
+        String cpf = input.lerString("Insira seu cpf: "); //CPF
 
         if(verificarSeHaContaCorrentePorCpf(cpf) == true){
             System.out.println("Erro! O CPF inserido já possui uma conta corrente.");
@@ -41,17 +42,17 @@ public class Caixa{
  
 
 
-/*         ContaCorrente conta = new ContaCorrente(
+         ContaCorrente conta = new ContaCorrente(
             cpf,
-            Registrador.lerData("\nInsira sua data de Nascimento: "), //Data de nascimento
-            Registrador.lerString("\nInsira seu email: "), //Email -------> Criar método lerEmail() no registrador <------------------------
-            Registrador.lerString("\nInsira seu telefone: "), //Telefone ---------> Criar método lerTelefone() no registrador <-------------------
-            Registrador.lerString("\nInsira sua senha: "), //Senha
+            input.lerData("\nInsira sua data de Nascimento: "), //Data de nascimento
+            input.lerString("\nInsira seu email: "), //Email -------> Criar método lerEmail() no registrador <------------------------
+            input.lerString("\nInsira seu telefone: "), //Telefone ---------> Criar método lerTelefone() no registrador <-------------------
+            input.lerString("\nInsira sua senha: "), //Senha
             "001" //Agência sempre é uma string 001
             //gerarNumeroConta()
             );
         listaDeContasCorrentes.add(conta);
         } 
-*/
+
     }
 }

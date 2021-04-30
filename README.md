@@ -3,6 +3,8 @@
 ## Separação
 
 - Verificar e criar coisas (fazer os construtores)
+    -Registrador lerEmail() receber e verificar
+    -Registrador lerTelefone() receber e verificar
 - Transferencias e extratos
 - Saldo, PIX e boletos
 
