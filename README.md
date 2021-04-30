@@ -1,7 +1,14 @@
 # Caixa Eletrônico
 
+## Separação
+
+- Verificar e criar coisas (fazer os construtores)
+- Transferencias e extratos
+- Saldo, PIX e boletos
+
 ## To-Do
 
+- [ ] Verificar Email, telefone ...
 - [ ] Abrir conta corrente ou poupança ( CPF, data de nascimento, e-mail, telefone e senha )
     - [ ] Caso você tenha uma conta corrente, o sistema não deve requerer novamente os dados pessoais para abrir uma conta poupança (e vice-versa)
     - [ ] A agência será sempre 0001 e o número da conta deve ser gerado pelo sistema
