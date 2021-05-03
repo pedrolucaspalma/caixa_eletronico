@@ -67,4 +67,18 @@ public final class Registrador {
 
 		return cpf.isEmpty() ? lerCPF("CPF invalido. Por favor, digite o CPF novamente") : cpf;
 	}
+
+	// TODO: Verificador de E-Mail
+	public String lerEmail(String mensagem) {
+		System.out.printf("%s [user@email.com]: ", mensagem);
+		String email = input.nextLine();
+		return email.isEmpty() ? lerEmail("Email invalido. Por favor, digite o Email novamente") : email;
+	}
+	
+	// TODO: Verificador de telefone
+	public String lerTelefone(String mensagem) {
+		System.out.printf("%s [+00 00 00000-0000]: ", mensagem);
+		String telefone = input.nextLine();
+		return telefone.isEmpty() ? lerTelefone("Telefone invalido. Por favor, digite o Telefone novamente") : telefone;
+	}
 }
