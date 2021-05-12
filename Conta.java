@@ -4,12 +4,8 @@ public abstract class Conta {
     protected String email;
     protected String telefone;
     protected String senha;
-
     protected String agencia;
     protected String numeroDaConta;
-
-    protected ContaCorrente contaCorrente;
-    protected ContaPoupanca contaPoupanca;
 
     public Conta (String cpf, String dataDeNascimento, String email, String telefone, String senha, String agencia, String numeroDaConta) {
         this.cpf = cpf;
@@ -19,10 +15,9 @@ public abstract class Conta {
         this.senha = senha;
         this.agencia = agencia;
         this.numeroDaConta = numeroDaConta;
-
-        // TODO: Selecionar tipo de conta para abrir.
     }
 
+    //__GETS
     public String getCpf() {
         return cpf;
     }

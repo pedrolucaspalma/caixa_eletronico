@@ -11,10 +11,11 @@ public class Caixa{
 
     public boolean verificarSeHaContaCorrentePorCpf(String cpf){
         for (ContaCorrente conta : listaDeContasCorrentes){
-            if(conta.getCpf().equals(cpf)){
+            if (conta.getCpf().equals(cpf)){
                 return true;
             }
         }
+
         return false;
     }
 
@@ -39,8 +40,6 @@ public class Caixa{
                 criar conta corrente baseado nos dados da conta poupança
         }) 
 */
- 
-
 
          ContaCorrente conta = new ContaCorrente(
             cpf,
@@ -53,6 +52,5 @@ public class Caixa{
             );
         listaDeContasCorrentes.add(conta);
         } 
-
     }
 }
