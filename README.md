@@ -1,5 +1,10 @@
 # Caixa Eletrônico
 
+## Tomorrow
+
+- [ ] Adicionar itens ao menu;
+- [ ] Começar a implementar os itens que o menu deve executar;
+
 ## Separação
 
 - Verificar e criar coisas (fazer os construtores)

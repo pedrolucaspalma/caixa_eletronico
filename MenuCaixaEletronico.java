@@ -6,11 +6,6 @@ public class MenuCaixaEletronico implements Menu {
         System.out.println("");
     }
 
-    public void selecionar() {
-        renderizarMenu();
-        executarSelecao(lerSelecao());
-    }
-
     public int lerSelecao() {
         return registrador.lerInt("> ");
     }
@@ -18,5 +13,10 @@ public class MenuCaixaEletronico implements Menu {
     public void executarSelecao(int itemSelecionado) {
         //TODO: Adicionar itens de seleção
         switch(itemSelecionado) {}
+    }
+
+    public void selecionar() {
+        renderizarMenu();
+        executarSelecao(lerSelecao());
     }
 }
