@@ -8,8 +8,11 @@ public final class Registrador {
 		String entrada = input.nextLine();
 
 		for (int i = 0; i < entrada.length(); i++) {
-			if (Character.isDigit(entrada.charAt(i))) continue;
-			else return lerInt("Entrada invalida. Por favor, digite novamente");
+			if (Character.isDigit(entrada.charAt(i))) {
+				continue;
+			} else {
+				return lerInt("Entrada invalida. Por favor, digite novamente");
+			}
 		}
 
 		return entrada.isEmpty() ? lerInt("Entrada invalida. Por favor, digite novamente") : Integer.parseInt(entrada);
@@ -24,18 +27,23 @@ public final class Registrador {
 		System.out.printf("%s [dd/mm/aaaa]: ", mensagem);
 		String data = input.nextLine();
 
-		if (data.length() != 10) return lerData("Data invalida. Por favor, digite a data novamente");
+		if (data.length() != 10) {
+			return lerData("Data invalida. Por favor, digite a data novamente");
+		}
 
-		//xx/xx/xxxx
 		for (int i = 0; i < data.length(); i++) {
 			if (i == 2 || i == 5) {
-				if (data.charAt(i) == '/') continue;
-				else return lerData("Data invalida. Por favor, digite a data novamente");
-			}
-
-			else {
-				if (Character.isDigit((data.charAt(i)))) continue;
-				else return lerData("Data invalida. Por favor, digite a data novamente");
+				if (data.charAt(i) == '/') {
+					continue;
+				} else {
+					return lerData("Data invalida. Por favor, digite a data novamente");
+				}
+			} else {
+				if (Character.isDigit((data.charAt(i)))) {
+					continue;
+				} else {
+					return lerData("Data invalida. Por favor, digite a data novamente");
+				}
 			}
 		}
 

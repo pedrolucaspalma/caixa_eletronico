@@ -3,4 +3,5 @@ public interface TransacaoEmConta {
     void getDescricao();
     void getTipoOpercao();
     void getData();
+    void depositar();
 }
