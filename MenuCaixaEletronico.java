@@ -70,7 +70,7 @@ public class MenuCaixaEletronico implements Menu {
         }
     }
 
-    public void selecionar() {
+    public void menu() {
         renderizarMenu();
         executarSelecao(lerSelecao());
     }
