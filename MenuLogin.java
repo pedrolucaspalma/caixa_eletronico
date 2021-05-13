@@ -8,15 +8,17 @@ public class MenuLogin implements Menu {
         // - Sair
 
         String mensagem = """
-                          |----------------------------------|\n
+                          ------------------------------------\n
                           |  Bem-vindo ao caixa eletronico!  |\n
-                          |----------------------------------|\n
+                          ------------------------------------\n
                           | Digite um desses numeros:        |\n
                           |                                  |\n
-                          | 1. Abrir Conta                   |\n
+                          | 1. Acessar conta                 |\n
+                          | 2. Abrir Conta                   |\n
+                          |                                  |\n
                           | 0. Sair                          |\n
                           |                                  |\n
-                          |----------------------------------|\n
+                          ------------------------------------\n
                           """;
 
         System.out.println(mensagem);
@@ -28,17 +30,17 @@ public class MenuLogin implements Menu {
 
     public void executarSelecao(int itemSelecionado) {
         //TODO: Adicionar itens de seleção
-        switch(itemSelecionado) {
+        switch(itemSelecionado) {/*
             switch {
                 case 1: {
-                    abrirConta();
+                    acessarConta();
                     break;
                 }
                 case 0: {
                     return;
                 }
             }
-        }
+        */}
     }
 
     public void selecionar() {

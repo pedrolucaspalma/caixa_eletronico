@@ -26,6 +26,7 @@ public class MenuCaixaEletronico implements Menu {
                           | 5. Emitir Extrato                |\n
                           | 6. Avancar no Tempo              |\n
                           | 7. Configurar PIX                |\n
+                          |                                  |\n
                           | 0. Encerrar Sessao               |\n
                           |                                  |\n
                           |----------------------------------|\n
