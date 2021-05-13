@@ -1,5 +1,52 @@
 # Caixa Eletrônico
 
+## Roadmap
+
+- [ ] Implementar função de cadastrar usuarios e integrar ao menu de login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-->
 ## Tomorrow
 
 - [ ] Adicionar itens ao menu;
@@ -35,3 +82,4 @@
 - [ ] Você deve utilizar uma interface TransacaoEmConta para definir o contrato básico de um item do extrato com os métodos getValor(), getDescricao(), getTipoOpercao e getData()
 - [ ] O sistema deve guardar o dia atual e permitir “avançar no tempo” (em dias), para poder refletir nos cálculos de rendimento de poupança, cálculo de poupança e salário. O mecanismo de “avanço no tempo” pode ser utilizado várias vezes
   - [ ] Entrada de conta de salário deve ser simulada mês a mês conforme o valor do salário e data de pagamento
+<--->
