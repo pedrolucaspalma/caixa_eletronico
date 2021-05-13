@@ -1,6 +1,5 @@
-import java.util.Map;
-import java.util.HashMap;
-
-public class BancoDeUsuarios {
-    private Map<Integer/*No Conta*/, String/*Senha*/> = new HashMap<Integer, String>();
+public interface BancoDeUsuarios {
+    public void cadastrarUsuario();
+    public void listarDadosDoUsuario(Usuario usuario);
+    public Usuario procurarUsuario(String senha);
 }
