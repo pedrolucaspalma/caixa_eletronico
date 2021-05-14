@@ -7,10 +7,4 @@ public class Usuario {
 
     public Usuario () {
     }
-
-    //TODO: Implementar temContaCorrente
-    //public boolean temContaCorrente() {}
-
-    //TODO: Implementar temContaPoupanca
-    //public boolean temContaPoupanca() {}
 }
