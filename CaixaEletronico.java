@@ -1,6 +1,9 @@
+import java.util.Calendar;
+
 public class CaixaEletronico {
 	private Registrador input = new Registrador();
 	private BancoDeContas contas = new BancoDeContas();
+	private Calendar calendar = Calendar.getInstance();
 
 	String numeroDaConta;
 
