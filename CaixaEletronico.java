@@ -5,7 +5,8 @@ public class CaixaEletronico {
 	private BancoDeContas contas = new BancoDeContas();
 	private Calendar calendar = Calendar.getInstance();
 
-	String numeroDaConta;
+	float valor;
+	float saldoAtual;
 
 	public int lerSelecao() {
 		return input.lerInt(".");
@@ -17,13 +18,13 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1:
-				numeroDaConta = input.lerString("Digite o numero da conta");
+				String numeroDaConta = input.lerString("Digite o numero da conta");
 				String senha = input.lerString("Digite a sua senha");
 
 				int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
 
 				if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
-					menuContaCorrente();
+					menuContaCorrente(contas.getContasCorrente().get(posConta));
 				} else {
 					System.out.printf("\nDados invalidos\n\n");
 				}
@@ -43,28 +44,41 @@ public class CaixaEletronico {
 		}
 	}
 
-	public void menuContaCorrente() {
+	public void menuContaCorrente(ContaCorrente conta) {
 		System.out.printf(
-				"Digite um desses numeros:\n\n1. Sacar\n2. Transferir\n3. Depositar\n4. Pagar Boleto\n5. Emitir Extrato\n6. Avancar no Tempo\n7. Configurar PIX\n\n0. Encerrar Sessao\n");
+				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 
 		switch (lerSelecao()) {
 			case 1: // TODO: Sacar
-				int pos = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
-				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar: "));
-				float saldoAtual = contas.getContasCorrente().get(pos).getSaldo();
+				valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar: "));
+				saldoAtual = conta.getSaldo();
 				if (saldoAtual >= valor) {
-					contas.getContasCorrente().get(pos).setSaldo(saldoAtual - valor);
+					conta.setSaldo(saldoAtual - valor);
 					System.out.println("Saque feito com sucesso.");
 				} else {
 					System.out.println("Valor indisponivel para o saque!");
 				}
-
+				menuLogin();
 				break;
 			case 2: // TODO: Depositar
+				valor = Float.parseFloat(input.lerValor("Digite o valor que deseja depositar: "));
+				saldoAtual = conta.getSaldo();
+				conta.setSaldo(saldoAtual + valor);
+				System.out.println("Deposito feito com sucesso.");
+				menuLogin();
 				break;
 			case 3: // Emitir Extrato
 				break;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
+				input.lerString("Digite a agencia do remetente");
+				String contaRemetente = input.lerString("Digite a numero da conta do remetente");
+				int posRemetente = contas.acharContaCorrentePorNumeroDaConta(contaRemetente);
+				saldoAtual = contas.getContasCorrente().get(posRemetente).getSaldo();
+				valor = Float.parseFloat(input.lerValor("Digite o valor da tranferencia: "));
+
+				contas.getContasCorrente().get(posRemetente).setSaldo(saldoAtual + valor);
+				System.out.println("Tranferencia feita com sucesso.");
+				menuLogin();
 				break;
 			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
 					// (cpf, e-mail e telefone ou criando uma chave nova)
