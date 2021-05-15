@@ -103,31 +103,31 @@ public abstract class Conta {
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
 
     switch(input){
-      case 1: 
-              for(String cpf : pix){
-                if(pix.equals(cpf)){
+      case 1:
+              for(String i : pix){
+                if(i.equals(cpf)){
                   System.out.println("CPF ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  break;
+                  return;
                 }
               }
               pix.add(cpf);
               System.out.println("CPF cadastrado com sucesso!");
               break;
       case 2: 
-              for(String email : pix){
-                if(pix.equals(email)){
+              for(String i : pix){
+                if(i.equals(email)){
                   System.out.println("Email ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  break;
+                  return;
                 }
               }
               pix.add(email);
               System.out.println("Email cadastrado com sucesso!");
               break;
       case 3: 
-              for(String telefone : pix){
-                if(pix.equals(telefone)){
+              for(String i : pix){
+                if(i.equals(telefone)){
                   System.out.println("Telefone ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  break;
+                  return;
                 }
               }
               pix.add(telefone);
