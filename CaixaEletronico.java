@@ -47,9 +47,17 @@ public class CaixaEletronico {
 		);
 
 		switch(lerSelecao()) {
-			case 3:
+			case 1: //TODO: Sacar
 				break;
-			case 4:
+			case 2: //TODO: Depositar
+				break;
+			case 3: // Emitir Extrato
+				break;
+			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
+				break;
+			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências (cpf, e-mail e telefone ou criando uma chave nova)
+				break;
+			case 6: //TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				break;
 		}
 	}
