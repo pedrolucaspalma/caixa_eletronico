@@ -60,7 +60,7 @@ public class BancoDeContas {
                 );
 
                 contasCorrente.add(contaCorrente);
-                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s", numeroDaConta);
+                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s\n\n", numeroDaConta);
             } else {
                 ContaPoupanca copiaDaContaPoupanca = contasPoupanca.get(acharContaPoupancaPorCPF(cpf));
                 String numeroDaConta = gerarNumeroDaConta();
@@ -77,10 +77,10 @@ public class BancoDeContas {
                 );
 
                 contasCorrente.add(contaCorrente);
-                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s", numeroDaConta);
+                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s\n\n", numeroDaConta);
             }
 		} else {
-			System.out.printf("\nO usuario ja possui uma conta corrente!\n");
+			System.out.printf("\nO usuario ja possui uma conta corrente!\n\n");
 		}
 	}
 
@@ -120,14 +120,18 @@ public class BancoDeContas {
                 );
 
                 contasPoupanca.add(contaPoupanca);
-                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s", numeroDaConta);
+                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s\n\n", numeroDaConta);
             }
 		} else {
-			System.out.printf("\nO usuario ja possui uma conta poupanca!\n");
+			System.out.printf("\nO usuario ja possui uma conta poupanca!\n\n");
 		}
 	}
 
 	public String gerarNumeroDaConta() {
 		return contasCorrente.size() + contasPoupanca.size() + "";
 	}
+
+  public ArrayList<ContaCorrente> getContasCorrente() {
+      return contasCorrente;
+  }
 }

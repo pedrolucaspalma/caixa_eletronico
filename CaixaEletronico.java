@@ -9,16 +9,20 @@ public class CaixaEletronico {
 	public void menuLogin() {
 		System.out.printf
 		(
-			"\n=== Bem-vindo ao caixa eletronico!\n\nDigite um desses numeros:\n\n1. Acessar conta corrente\n2. Acessar conta poupanca\n3. Abrir conta corrente\n4. Abrir conta poupanca\n\n0. Sair\n\n"
+			"Digite um desses numeros:\n\n1. Acessar conta corrente\n2. Acessar conta poupanca\n3. Abrir conta corrente\n4. Abrir conta poupanca\n\n0. Sair\n\n"
 		);
 
 		switch(lerSelecao()) {
 			case 1:
 				String numeroDaConta = input.lerString("Digite o numero da conta");
-				if (contas.acharContaCorrentePorNumeroDaConta(numeroDaConta) != -1) {
+				String senha = input.lerString("Digite a sua senha");
+
+				int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
+
+				if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
 					menuContaCorrente();
 				} else {
-					System.out.println("Conta nao esta cadastrada");
+					System.out.printf("\nDados invalidos\n\n");
 				}
 
 				menuLogin();
