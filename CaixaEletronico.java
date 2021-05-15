@@ -5,9 +5,6 @@ public class CaixaEletronico {
 	private BancoDeContas contas = new BancoDeContas();
 	private Calendar calendar = Calendar.getInstance();
 
-	float valor;
-	float saldoAtual;
-
 	public int lerSelecao() {
 		return input.lerInt(".");
 	}
@@ -49,23 +46,27 @@ public class CaixaEletronico {
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 
 		switch (lerSelecao()) {
-			case 1: // TODO: Sacar
-				valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar: "));
-				saldoAtual = conta.getSaldo();
+			case 1:
+				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar"));
+				float saldoAtual = conta.getSaldo();
+
 				if (saldoAtual >= valor) {
 					conta.setSaldo(saldoAtual - valor);
 					System.out.println("Saque feito com sucesso.");
 				} else {
 					System.out.println("Valor indisponivel para o saque!");
 				}
-				menuLogin();
-				break;
-			case 2: // TODO: Depositar
-				valor = Float.parseFloat(input.lerValor("Digite o valor que deseja depositar: "));
-				saldoAtual = conta.getSaldo();
+
+				menuContaCorrente(conta);
+				return;
+        break;
+			case 2:
+				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja depositar"));
+				float saldoAtual = conta.getSaldo();
+
 				conta.setSaldo(saldoAtual + valor);
 				System.out.println("Deposito feito com sucesso.");
-				menuLogin();
+				menuContaCorrente(conta);
 				break;
 			case 3: // Emitir Extrato
 				break;

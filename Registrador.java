@@ -96,7 +96,7 @@ public final class Registrador {
 	}
 
 	public String lerValor(String mensagem) {
-		System.out.printf("%s", mensagem);
+		System.out.printf("%s: ", mensagem);
 		String valor = input.nextLine();
 		return valor.isEmpty() ? lerValor("Valor invalido. Por favor, digite o valor novamente") : valor;
 	}
