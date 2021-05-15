@@ -1,5 +1,5 @@
 public class ContaPoupanca extends Conta {
-    public ContaPoupanca(String cpf, String dataDeNascimento, String email, String telefone, String senha, String agencia, String numeroDaConta) {
-        super(cpf, dataDeNascimento, email, telefone, senha, agencia, numeroDaConta);
+    public ContaPoupanca (String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha, String numeroDaConta, float saldo) {
+        super(nome, cpf, dataDeNascimento, email, telefone, senha, numeroDaConta, saldo);
     }
 }

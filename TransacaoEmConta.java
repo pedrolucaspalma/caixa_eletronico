@@ -1,7 +1,7 @@
 public interface TransacaoEmConta {
     void getValor();
     void getDescricao();
-    void getTipoOpercao();
+    void getTipoOperacao();
     void getData();
     void depositar();
 }
