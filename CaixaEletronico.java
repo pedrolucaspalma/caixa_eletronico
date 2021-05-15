@@ -1,20 +1,20 @@
 public class CaixaEletronico {
 	private Registrador input = new Registrador();
 	private BancoDeContas contas = new BancoDeContas();
-	
+
+	String numeroDaConta;
+
 	public int lerSelecao() {
 		return input.lerInt(".");
 	}
 
 	public void menuLogin() {
-		System.out.printf
-		(
-			"Digite um desses numeros:\n\n1. Acessar conta corrente\n2. Acessar conta poupanca\n3. Abrir conta corrente\n4. Abrir conta poupanca\n\n0. Sair\n\n"
-		);
+		System.out.printf(
+				"Digite um desses numeros:\n\n1. Acessar conta corrente\n2. Acessar conta poupanca\n3. Abrir conta corrente\n4. Abrir conta poupanca\n\n0. Sair\n\n");
 
-		switch(lerSelecao()) {
+		switch (lerSelecao()) {
 			case 1:
-				String numeroDaConta = input.lerString("Digite o numero da conta");
+				numeroDaConta = input.lerString("Digite o numero da conta");
 				String senha = input.lerString("Digite a sua senha");
 
 				int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
@@ -41,23 +41,33 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaCorrente() {
-		System.out.printf
-		(
-			"Digite um desses numeros:\n\n1. Sacar\n2. Transferir\n3. Depositar\n4. Pagar Boleto\n5. Emitir Extrato\n6. Avancar no Tempo\n7. Configurar PIX\n\n0. Encerrar Sessao\n"
-		);
+		System.out.printf(
+				"Digite um desses numeros:\n\n1. Sacar\n2. Transferir\n3. Depositar\n4. Pagar Boleto\n5. Emitir Extrato\n6. Avancar no Tempo\n7. Configurar PIX\n\n0. Encerrar Sessao\n");
 
-		switch(lerSelecao()) {
-			case 1: //TODO: Sacar
+		switch (lerSelecao()) {
+			case 1: // TODO: Sacar
+				int pos = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
+				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar: "));
+				float saldoAtual = contas.getContasCorrente().get(pos).getSaldo();
+				if (saldoAtual >= valor) {
+					contas.getContasCorrente().get(pos).setSaldo(saldoAtual - valor);
+					System.out.println("Saque feito com sucesso.");
+				} else {
+					System.out.println("Valor indisponivel para o saque!");
+				}
+
 				break;
-			case 2: //TODO: Depositar
+			case 2: // TODO: Depositar
 				break;
 			case 3: // Emitir Extrato
 				break;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
 				break;
-			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências (cpf, e-mail e telefone ou criando uma chave nova)
+			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
+					// (cpf, e-mail e telefone ou criando uma chave nova)
 				break;
-			case 6: //TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data
+					// de vencimento)
 				break;
 		}
 	}

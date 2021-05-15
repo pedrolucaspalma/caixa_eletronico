@@ -54,22 +54,29 @@ public final class Registrador {
 		System.out.printf("%s [000.000.000-00]: ", mensagem);
 		String cpf = input.nextLine();
 
-		if (cpf.length() != 14) return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
+		if (cpf.length() != 14)
+			return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
 
 		for (int i = 0; i < cpf.length(); i++) {
 			if (i == 3 || i == 7) {
-				if (cpf.charAt(i) == '.') continue;
-				else return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
+				if (cpf.charAt(i) == '.')
+					continue;
+				else
+					return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
 			}
 
 			else if (i == 11) {
-				if (cpf.charAt(i) == '-') continue;
-				else return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
+				if (cpf.charAt(i) == '-')
+					continue;
+				else
+					return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
 			}
 
 			else {
-				if (Character.isDigit(cpf.charAt(i))) continue;
-				else return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
+				if (Character.isDigit(cpf.charAt(i)))
+					continue;
+				else
+					return lerCPF("CPF invalido. Por favor, digite o CPF novamente");
 			}
 		}
 
@@ -81,10 +88,16 @@ public final class Registrador {
 		String email = input.nextLine();
 		return email.isEmpty() ? lerEmail("Email invalido. Por favor, digite o Email novamente") : email;
 	}
-	
+
 	public String lerTelefone(String mensagem) {
 		System.out.printf("%s [+00 00 00000-0000]: ", mensagem);
 		String telefone = input.nextLine();
 		return telefone.isEmpty() ? lerTelefone("Telefone invalido. Por favor, digite o Telefone novamente") : telefone;
+	}
+
+	public String lerValor(String mensagem) {
+		System.out.printf("%s", mensagem);
+		String valor = input.nextLine();
+		return valor.isEmpty() ? lerValor("Valor invalido. Por favor, digite o valor novamente") : valor;
 	}
 }
