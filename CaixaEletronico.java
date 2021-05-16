@@ -91,7 +91,9 @@ public class CaixaEletronico {
 				break;
 			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
 					// (cpf, e-mail e telefone ou criando uma chave nova)
-				break;
+					conta.adicionarPix();
+					menuContaCorrente(conta);
+					break;
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data
 					// de vencimento)
 				break;
