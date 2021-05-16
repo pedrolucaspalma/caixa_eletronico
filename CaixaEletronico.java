@@ -53,6 +53,7 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaPoupanca(ContaPoupanca conta){
+		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", nome, saldo);
 		System.out.printf(
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 		switch (lerSelecao()) {
@@ -89,6 +90,7 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaCorrente(ContaCorrente conta) {
+		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", nome, saldo);
 		System.out.printf(
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 
