@@ -78,9 +78,16 @@ public class CaixaEletronico {
 				break;
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				break;
+			case 0 :
+				menuLogin();
+				break;
+			default:
+				System.out.println("Input Invalido!");
+				menuContaCorrente(conta);
+				break;
 		}
 	}
-	
+
 	public void menuContaCorrente(ContaCorrente conta) {
 		System.out.printf(
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
@@ -108,6 +115,13 @@ public class CaixaEletronico {
 				menuContaCorrente(conta);
 				break;
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+				break;
+			case 0 :
+				menuLogin();
+				break;
+			default:
+				System.out.println("Input Invalido!");
+				menuContaCorrente(conta);
 				break;
 		}
 	}
