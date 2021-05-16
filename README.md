@@ -61,27 +61,51 @@ A implementação de conta salário foi feita como um atributo na classe Conta. 
 ## Testes
 
 1. Adicionar uma conta corrente
+
 2. Adicionar conta poupança logado na conta corrente (ele não deve requerer os dados de novo)
+
 3. Fazer a conta corrente ativar a conta salário
+
     3.1.Simular pagamento
+
 4. Mostrar rendimento na conta poupança
+
 5. Na conta poupança:
+
     5.1. Depositar 500 reais
+
     5.2. Sacar 1000 reais (Saldo precisará ser -500 reais)
+
     5.3. Sacar 2600 (Deverá ser impedido)
+
     5.4. Depositar 1500 reais (Saldo precisará ser 1000 reais)
+
     5.5. Transferir 100 reais para Conta Corrente por TED
+
     5.6. Adicionar CPF como pix
+
     5.7. Adicionar CPF como pix (deverá ser impedido)
+
 6. Na conta Corrente:
+
     6.1. Adicionar CPF como pix (deverá ser impedido)
+
     6.2. Adicionar telefone como pix
+
 7. Na conta poupança:
+
     7.1. Transferir 100 reais para Conta Corrente por pix (Selecionar pix errado, devera ser impedido)
+
     7.2. Tentar transferir para si mesmo
+
     7.3. Pagar boleto de 100 reais (sem multa)
+
     7.4. Pagar boleto de 100 reais (com 1 dia de multa)
+
     7.5. Gerar extrato
+
     7.6. Olhar item do extrato
+
 8. Na conta corrente:
+
     8.1. Olhar se Transferencias recebidas aparecem no extrato
