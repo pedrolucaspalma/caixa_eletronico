@@ -25,3 +25,9 @@
 - [x] Fazer depositos e saques em contas
     - [x] A conta corrente terá um limite de cheque especial no valor de R$3000,00
 - [x] Você deve implementar as classes de conta utilizando os conceitos de herança e classe abstrata
+
+## Roteiro
+
+Registrador - Classe que cuida de entrada, saída e verificação de dados. Nela temos métodos como lerInteiro, LerFloat e outros tipos de inputs que utilizamos com frequência durante o código.
+
+Conta - Classe abstrata que age como molde para ContaCorrente e ContaPoupança.
