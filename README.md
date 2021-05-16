@@ -4,14 +4,12 @@
 
 ### DOING
 
-- [ ] fazer transferência entre contas por meio da agência e conta ou através do “PIX”
-
-
-- [ ] Tanto conta corrente quanto poupança podem ser conta-salário (o valor do salário e data de pagamento devem ser definidos neste caso)
 - [ ] Entrada de conta de salário deve ser simulada mês a mês conforme o valor do salário e data de pagamento
 
 ## DONE
 
+- [x] Tanto conta corrente quanto poupança podem ser conta-salário (o valor do salário e data de pagamento devem ser definidos neste caso)
+- [x] fazer transferência entre contas por meio da agência e conta ou através do “PIX”
 - [x] Atualizar mensalmente o saldo da conta poupança com o rendimento rendimento de 0,3%
 - [x] O sistema deve permitir selecionar um item do extrato para mostrar todos os detalhes. Exemplo: caso o item do extrato seja um pagamento de boleto, sistema deve mostrar todas as suas informações (código de barras, valor, data e multa)
 - [x] pagar boletos (digitando o código de barras de 48 dígitos, valor e data de vencimento)
