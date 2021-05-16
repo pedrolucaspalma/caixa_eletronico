@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class Salario {
     private boolean ativa;
     private float pagamento;
