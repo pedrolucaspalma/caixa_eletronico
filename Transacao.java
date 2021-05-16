@@ -5,8 +5,8 @@ public class Transacao implements TransacaoEmConta {
     private String descricao;
     private String tipoOperacao;
     private String destinatario;
-    private LocalDate data;
     private float valor;
+    private LocalDate data;
 
     public Transacao(String remetente, String descricao, String tipoOperacao, String destinatario, float valor, LocalDate data) {
         this.remetente = remetente;
