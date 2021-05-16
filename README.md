@@ -34,11 +34,13 @@ Tirar cheque especial da conta poupança
 Classe que cuida de entrada, saída e verificação de dados. Nela temos métodos como lerInteiro, LerFloat e outros tipos de inputs que utilizamos com frequência durante o código.
 
 ### Conta
-Classe abstrata que age como molde para ContaCorrente e ContaPoupança. Possui atributos !!LER ATRIBUTOS!! que serão comuns aos dois tipos de conta. 
+Classe abstrata que age como molde para ContaCorrente e ContaPoupança. Possui atributos !!LER ATRIBUTOS!! que serão comuns aos dois tipos de conta.
+
+A implementação de PIX foi feita como um arraylist de Strings. Caso a string inserida
 
 A implementação de conta salário foi feita como um atributo na classe Conta. Esse atributo é composto de um objeto Salario que contém um booleano, um valor de pagamento e uma data de pagamento. Quando a conta (poupança ou corrente) é criada, esse objeto é inicado como "false, 0, dataAtual", e depois o objeto é atualizado quando o usuário decide de fato ativar a conta salário.
 
-Além dos gets e sets, a classe possui os métodos pagarBoleto(), sacar(), depositar(), adicionarPix()
+Além dos gets e sets, a classe possui os métodos pagarBoleto(), sacar(), depositar(), adicionarPix(), transferirPorTed() e transferirPorPix(),
 
 
 ## Testes
