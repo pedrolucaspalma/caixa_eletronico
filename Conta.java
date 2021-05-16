@@ -39,7 +39,7 @@ public abstract class Conta {
     this.numeroDaConta = numeroDaConta;
     this.dataDeCriacao = dataDeCriacao;
     this.saldo = saldo;
-    this.salario = new Salario(false, 0, dataDeCriacao);
+    this.salario = new Salario(false, 0, "00");
   }
 
   public String getNome() {
@@ -120,17 +120,6 @@ public abstract class Conta {
 
   public Salario getSalario() {
     return salario;
-  }
-
-  public void atualizarSalario(LocalDate antigaData, LocalDate novaData) {
-    Period periodoDataCriacaoDataAntiga = Period.between(dataDeCriacao, antigaData);
-    Period periodoDataCriacaoDataNova = Period.between(dataDeCriacao, novaData);
-    Period periodoSalario = periodoDataCriacaoDataNova.minus(periodoDataCriacaoDataAntiga);
-    int meses = periodoSalario.getMonths();
-
-    for (int i = 0; i < meses; i++) {
-      saldo += salario.getPagamento();
-    }
   }
 
   //TODO: Explicar o porque de nao termos criar um objeto boleto
@@ -384,6 +373,24 @@ public abstract class Conta {
 
   public void ativarContaSalario(Conta conta){
     Registrador registrador = new Registrador();
-    salario = new Salario(true, registrador.lerFloat("Insira o seu pagamento"), registrador.lerData("Insira o dia da sua data de pagamento"));
+    salario = new Salario(true, registrador.lerFloat("Insira o seu pagamento"), registrador.lerString("Insira o dia da sua data de pagamento [dd]"));
+  }
+
+  public void atualizarSalario(Salario salario, LocalDate antigaData, LocalDate novaData) {
+    DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    String antigaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    String novaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+    LocalDate antigaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + antigaDataString.substring(1), formatoData);
+    LocalDate novaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + novaDataString.substring(1), formatoData);
+
+    Period periodoSalario = Period.between(antigaDataConvertida, novaDataConvertida);
+    
+    int meses = periodoSalario.getMonths();
+
+    for (int i = 0; i < meses; i++) {
+      saldo += salario.getPagamento();
+    }
   }
 }

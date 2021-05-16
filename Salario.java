@@ -3,9 +3,9 @@ import java.time.LocalDate;
 public class Salario {
     private boolean ativa;
     private float pagamento;
-    private LocalDate diaDoPagamento;
+    private String diaDoPagamento;
     
-    public Salario(boolean ativa, float pagamento, LocalDate diaDoPagamento) {
+    public Salario(boolean ativa, float pagamento, String diaDoPagamento) {
         this.ativa = ativa;
         this.pagamento = pagamento;
         this.diaDoPagamento = diaDoPagamento;
@@ -27,11 +27,11 @@ public class Salario {
         this.pagamento = pagamento;
     }
 
-    public LocalDate getDiaDoPagamento() {
+    public String getDiaDoPagamento() {
         return diaDoPagamento;
     }
 
-    public void setDiaDoPagamento(LocalDate diaDoPagamento) {
+    public void setDiaDoPagamento(String diaDoPagamento) {
         this.diaDoPagamento = diaDoPagamento;
     }
 }
