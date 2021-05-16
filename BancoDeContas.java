@@ -64,7 +64,7 @@ public class BancoDeContas {
         return -1;
     }
 
-	public void abrirContaCorrente() {
+	public void abrirContaCorrente(LocalDate data) {
         String cpf = registrador.lerCPF("Insira o CPF");
 
         if (acharContaCorrentePorCPF(cpf) == -1) {
@@ -79,6 +79,7 @@ public class BancoDeContas {
                         registrador.lerTelefone("Insira o seu telefone"),
                         registrador.lerString("Insira a sua senha"),
                         numeroDaConta,
+                        data,
                         0
                 );
 
@@ -96,6 +97,7 @@ public class BancoDeContas {
                         copiaDaContaPoupanca.getTelefone(),
                         copiaDaContaPoupanca.getSenha(),
                         numeroDaConta,
+                        copiaDaContaPoupanca.getDataDeCriacao(),
                         0
                 );
 
@@ -107,7 +109,7 @@ public class BancoDeContas {
 		}
 	}
 
-    public void abrirContaPoupanca() {
+    public void abrirContaPoupanca(LocalDate data) {
         String cpf = registrador.lerCPF("Insira o CPF");
 
         if (acharContaPoupancaPorCPF(cpf) == -1) {
@@ -122,6 +124,7 @@ public class BancoDeContas {
                         registrador.lerTelefone("Insira o seu telefone"),
                         registrador.lerString("Insira a sua senha"),
                         numeroDaConta,
+                        data,
                         0
                 );
 
@@ -139,6 +142,7 @@ public class BancoDeContas {
                         copiaDaContaCorrente.getTelefone(),
                         copiaDaContaCorrente.getSenha(),
                         numeroDaConta,
+                        copiaDaContaCorrente.getDataDeCriacao(),
                         0
                 );
 

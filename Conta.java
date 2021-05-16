@@ -15,7 +15,7 @@ public abstract class Conta {
   protected String agencia;
   protected String numeroDaConta;
   protected LocalDate dataDeCriacao;
-  protected ArrayList<String> pix;
+  protected ArrayList<String> pix = new ArrayList<String>();
   protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
 
@@ -106,6 +106,10 @@ public abstract class Conta {
     this.numeroDaConta = numeroDaConta;
   }
 
+  public LocalDate getDataDeCriacao() {
+    return dataDeCriacao;
+  }
+
   public float getSaldo() {
     return saldo;
   }
@@ -175,6 +179,7 @@ public abstract class Conta {
   }
 
   public void sacar(LocalDate data) {
+    //TODO: CORRIGIR LERFLOAT
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
     float saldoAtual = getSaldo();
 
@@ -191,7 +196,7 @@ public abstract class Conta {
   }
 
   public void depositar(LocalDate data) {
-    float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
+    float valor = registrador.lerFloat("Digite o valor que deseja depositar");
     float saldoAtual = getSaldo();
 
     setSaldo(saldoAtual + valor);
@@ -203,7 +208,7 @@ public abstract class Conta {
   }
 
   public void adicionarPix(BancoDeContas contas) {
-    int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
+    int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n.");
 
     switch (input) {
       case 1:
@@ -250,8 +255,6 @@ public abstract class Conta {
       saldo -= valor;
       destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-      String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
-
       Transacao transacaoRemetente = new Transacao(
           nome,
           "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
@@ -268,7 +271,7 @@ public abstract class Conta {
         destinatario.nome,
         valor,
         data
-    );
+      );
 
       extrato.add(transacaoRemetente);
       destinatario.extrato.add(transacaoDestinatario);
@@ -279,35 +282,30 @@ public abstract class Conta {
 
   public void transferirPorTED(Conta destinatario, float valor, LocalDate data) {
     if ((saldo - valor) >= -3000.) {
+      System.out.println("SaldoR antes: " + saldo);
+      System.out.println("SaldoD antes: " + destinatario.getSaldo());
       saldo -= valor;
       destinatario.setSaldo(destinatario.getSaldo() + valor);
+      System.out.println("SaldoR depois: " + saldo);
+      System.out.println("SaldoD antes: " + destinatario.getSaldo());
 
-    Transacao transacao = new Transacao(
+      Transacao transacaoRemetente = new Transacao(
+          nome,
+          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia TED",
+          destinatario.nome,
+          valor,
+          data
+      );
+
+      Transacao transacaoDestinatario = new Transacao(
         nome,
-        "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
         "Transferencia TED",
         destinatario.nome,
         valor,
         data
-    );
-
-    Transacao transacaoRemetente = new Transacao(
-        nome,
-        "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
-        "Transferencia TED",
-        destinatario.nome,
-        valor,
-        data
-    );
-
-    Transacao transacaoDestinatario = new Transacao(
-      nome,
-      "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
-      "Transferencia TED",
-      destinatario.nome,
-      valor,
-      data
-    );
+      );
 
       extrato.add(transacaoRemetente);
       destinatario.extrato.add(transacaoDestinatario);

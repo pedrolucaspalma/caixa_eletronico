@@ -12,6 +12,6 @@ public class ContaCorrente extends Conta {
                 LocalDate dataDeCriacao,
                 float saldo
     ) {
-        super(nome, cpf, dataDeNascimento, email, telefone, senha, numeroDaConta, dataDeCriacao,saldo);
+        super(nome, cpf, dataDeNascimento, email, telefone, senha, numeroDaConta, dataDeCriacao, saldo);
     }
 }

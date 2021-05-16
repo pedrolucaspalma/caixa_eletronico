@@ -46,18 +46,18 @@ public class CaixaEletronico {
 			case 1:
 				login();
 				menuLogin();
-				break;
+				return;
 			case 3:
-				contas.abrirContaCorrente();
+				contas.abrirContaCorrente(data);
 				menuLogin();
-				break;
+				return;
 			case 4:
-				contas.abrirContaPoupanca();
+				contas.abrirContaPoupanca(data);
 				menuLogin();
-				break;
+				return;
 			case 5:
 				menuLogin();
-				break;
+				return;
 			case 0:
 				return;
 		}
@@ -101,7 +101,7 @@ public class CaixaEletronico {
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				break;
 			case 0 :
-				menuLogin();
+				menuContaPoupanca(conta);
 				break;
 			default:
 				System.out.println("Input Invalido!");
@@ -173,34 +173,33 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1: // Sacar
-				conta.sacar();
+				conta.sacar(data);
 				menuContaCorrente(conta);
 				return;
 			case 2: // Depositar
-				conta.depositar();
+				conta.depositar(data);
 				menuContaCorrente(conta);
 				break;
 			case 3: // Emitir Extrato
 				conta.imprimirExtrato();
 				menuContaCorrente(conta);
 				break;
-			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
-				//TODO:Implementar transferencia
-				menuLogin();
+			case 4:
+				menuTransferencia(conta);
+				menuContaCorrente(conta);
 				break;
-			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
+			case 5:
 				conta.adicionarPix(contas);
 				menuContaCorrente(conta);
 				break;
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				break;
 			case 0 :
-				menuLogin();
-				break;
+				return;
 			default:
 				System.out.println("Input Invalido!");
 				menuContaCorrente(conta);
-				break;
+				return;
 		}
 	}
 }
