@@ -12,7 +12,7 @@ public abstract class Conta {
   protected String agencia;
   protected String numeroDaConta;
   protected ArrayList<String> pix;
-  protected ArrayList<String> historicoDeTransacoes;
+  protected ArrayList<Transacao> extrato;
   protected float saldo;
 
   public Conta(String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha, String numeroDaConta, float saldo) {
@@ -109,6 +109,9 @@ public abstract class Conta {
     } else {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
+
+    Transacao transacao = new Transacao()
+
   }
 
   public void depositar(){

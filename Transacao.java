@@ -7,7 +7,7 @@ public class Transacao implements TransacaoEmConta{
     private String destinatário;
     private float valor;
     private Calendar data;
-    
+
     public String getRemetente() {
         return remetente;
     }
