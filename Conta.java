@@ -101,12 +101,11 @@ public abstract class Conta {
 
   public void depositar(){
     float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
-		float saldoAtual = conta.getSaldo();
+		float saldoAtual = saldo;
 
-		conta.setSaldo(saldoAtual + valor);
+		setSaldo(saldoAtual + valor);
 		System.out.println("Deposito feito com sucesso.");
   }
-
 
   public void adicionarPix(){
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
