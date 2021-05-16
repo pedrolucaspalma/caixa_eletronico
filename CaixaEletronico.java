@@ -94,22 +94,22 @@ public class CaixaEletronico {
 			case 2: // Depositar
 				conta.depositar(data);
 				menuContaPoupanca(conta);
-				break;
+				return;
 			case 3: // Emitir Extrato
 				conta.imprimirExtrato();
 				menuContaPoupanca(conta);
-				break;
+				return;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
-				//TODO:Implementar transferencia
-				menuLogin();
-				break;
+				menuTransferencia(conta);
+				menuContaPoupanca(conta);
+				return;
 			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
 				conta.adicionarPix(contas);
 				menuContaPoupanca(conta);
-				break;
+				return;
 			case 6: // Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				conta.pagarBoleto(data);
-				break;
+				return;
 			case 7:
 				if(conta.salario.getAtiva() == false){
 					conta.ativarContaSalario(conta);
@@ -117,18 +117,18 @@ public class CaixaEletronico {
 				} else{
 					System.out.println("A conta ja e conta salario. Operacao encerrada.");
 				}
-				break;
+				return;
 			case 0 :
 				menuContaPoupanca(conta);
-				break;
+				return;
 			default:
 				System.out.println("Input Invalido!");
 				menuContaPoupanca(conta);
-				break;
+				return;
 		}
 	}
 
-	public void menuTransferencia(ContaCorrente conta) {
+	public void menuTransferencia(Conta conta) {
 		System.out.println(
 				"Digite um desses numeros:\n\n" +
 				"1. Transferencia PIX\n" +
@@ -197,22 +197,22 @@ public class CaixaEletronico {
 			case 2: // Depositar
 				conta.depositar(data);
 				menuContaCorrente(conta);
-				break;
+				return;
 			case 3: // Emitir Extrato
 				conta.imprimirExtrato();
 				menuContaCorrente(conta);
-				break;
+				return;
 			case 4:
 				menuTransferencia(conta);
 				menuContaCorrente(conta);
-				break;
+				return;
 			case 5:
 				conta.adicionarPix(contas);
 				menuContaCorrente(conta);
-				break;
+				return;
 			case 6:
 				conta.pagarBoleto(data);
-				break;
+				return;
 			case 7:
 				if(conta.salario.getAtiva() == false){
 					conta.ativarContaSalario(conta);
@@ -220,7 +220,7 @@ public class CaixaEletronico {
 				} else{
 					System.out.println("A conta ja e conta salario. Operacao encerrada.");
 				}
-				break;
+				return;
 			case 0 :
 				return;
 			default:
