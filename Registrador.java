@@ -3,6 +3,24 @@ import java.util.Scanner;
 public final class Registrador {
 	private Scanner input = new Scanner(System.in);
 
+	public String lerCodigoDeBoleto(String mensagem){
+		System.out.printf("%s (Codigo de 48 algarismos):", mensagem);
+		String codigoDeBoleto = input.nextLine();
+
+		if (codigoDeBoleto.length() != 48)
+			return lerCodigoDeBoleto("Codigo de boleto invalido. Por favor, digite o codigo de boleto novamente.");
+		
+		for(int i = 0; i < codigoDeBoleto.length(); i++){
+			if(Character.isDigit(codigoDeBoleto.charAt(i))){
+				continue;
+			}
+			else{
+				return lerCodigoDeBoleto("Codigo de boleto invalido. Por favor, digite o codigo de boleto novamente.");
+			}
+		}
+		return codigoDeBoleto.isEmpty() ? lerCodigoDeBoleto("Codigo de boleto invalido. Por favor, digite o codigo de boleto novamente.") : codigoDeBoleto;
+	}
+
 	public float lerFloat(String mensagem) {
 		System.out.printf("%s: ", mensagem);
 		String entrada = input.nextLine();

@@ -99,6 +99,10 @@ public abstract class Conta {
     this.saldo = saldo;
   }
 
+  public void pagarBoleto(){
+    registrador.ler
+  }
+
   public ArrayList<String> getPix() {
       return pix;
   }
@@ -198,5 +202,15 @@ public abstract class Conta {
           destinatario.nome,
           valor
     );
+  }
+
+  public void imprimirExtrato(){
+    for(Transacao i : extrato){
+      //Todo EXIBIR DETALHES DA TRANSACAO
+      // System.out.println("Data " +);
+      System.out.println("Tipo de operacao: " +i.getTipoOperacao());
+      System.out.println("Descricao: " +i.getDescricao());
+      System.out.println("Valor: " +i.getValor());
+    }
   }
 }
