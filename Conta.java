@@ -110,8 +110,9 @@ public abstract class Conta {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
 
-    Transacao transacao = new Transacao()
+    Transacao transacao = new Transacao(nome,"Saque de R$" + valor, "Saque", "N/A", valor);
 
+    extrato.add(transacao);
   }
 
   public void depositar(){
@@ -120,6 +121,8 @@ public abstract class Conta {
 
 		setSaldo(saldoAtual + valor);
 		System.out.println("Deposito feito com sucesso.");
+
+    
   }
 
   public void adicionarPix(){

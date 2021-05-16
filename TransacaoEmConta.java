@@ -1,8 +1,8 @@
-import java.util.Calendar;
+// import java.util.Calendar;
 
 public interface TransacaoEmConta {
     float getValor();
     String getDescricao();
     String getTipoOperacao();
-    Calendar getData();
+    // Calendar getData();
 }
