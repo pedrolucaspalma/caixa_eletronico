@@ -1,7 +1,8 @@
+import java.util.Calendar;
+
 public interface TransacaoEmConta {
-    void getValor();
-    void getDescricao();
-    void getTipoOperacao();
-    void getData();
-    void depositar();
+    float getValor();
+    String getDescricao();
+    String getTipoOperacao();
+    Calendar getData();
 }

@@ -58,15 +58,7 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1: // Sacar
-				// float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar"));
-				// float saldoAtual = conta.getSaldo();
-
-				// if (saldoAtual >= valor) {
-				// 	conta.setSaldo(saldoAtual - valor);
-				// 	System.out.println("Saque feito com sucesso.");
-				// } else {
-				// 	System.out.println("Valor indisponivel para o saque!");
-				// }
+				conta.sacar();
 				menuContaCorrente(conta);
 				return;
         		//break;
