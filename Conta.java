@@ -193,33 +193,41 @@ public abstract class Conta {
   }
 
   public void transferirPorPIX(Conta destinatario, float valor, Calendar data) {
-    saldo -= valor;
-    destinatario.setSaldo(destinatario.getSaldo() + valor);
+    if ((saldo - valor) >= -3000.) {
+      saldo -= valor;
+      destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-    String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
+      String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
 
-    //TODO: Adicionar data
-    Transacao transacao = new Transacao(
-          nome,
-          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
-          "Transferencia PIX",
-          destinatario.nome,
-          valor
-    );
+      //TODO: Adicionar data
+      Transacao transacao = new Transacao(
+            nome,
+            "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+            "Transferencia PIX",
+            destinatario.nome,
+            valor
+      );
+    } else {
+      System.out.printf("\nSaldo insuficiente\n\n");
+    }
   }
 
   public void transferirPorTED(Conta destinatario, float valor) {
-    saldo -= valor;
-    destinatario.setSaldo(destinatario.getSaldo() + valor);
+    if ((saldo - valor) >= -3000.) {
+      saldo -= valor;
+      destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-    //TODO: Adicionar data
-    Transacao transacao = new Transacao(
+      //TODO: Adicionar data
+      Transacao transacao = new Transacao(
           nome,
           "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
           "Transferencia TED",
           destinatario.nome,
           valor
-    );
+          );
+    } else {
+      System.out.printf("\nSaldo insuficiente\n\n");
+    }
   }
 
   public void imprimirExtrato(){
