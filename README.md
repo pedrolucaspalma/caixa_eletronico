@@ -4,7 +4,6 @@
 
 ### DOING
 
-- [ ] Atualizar mensalmente o saldo da conta poupança com o rendimento rendimento de 0,3%
 - [ ] fazer transferência entre contas por meio da agência e conta ou através do “PIX”
 
 
@@ -13,6 +12,7 @@
 
 ## DONE
 
+- [x] Atualizar mensalmente o saldo da conta poupança com o rendimento rendimento de 0,3%
 - [x] O sistema deve permitir selecionar um item do extrato para mostrar todos os detalhes. Exemplo: caso o item do extrato seja um pagamento de boleto, sistema deve mostrar todas as suas informações (código de barras, valor, data e multa)
 - [x] pagar boletos (digitando o código de barras de 48 dígitos, valor e data de vencimento)
     - [x] Caso esteja em atraso, o sistema deve aplicar multa de 0,1% ao dia
