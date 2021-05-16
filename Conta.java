@@ -291,7 +291,11 @@ public abstract class Conta {
   }
 
   public int imprimirDescricao(int index){
-
+    for(Transacao i : extrato){
+      if(extrato.indexof(i) == index){
+        System.out.println(i.getDescricao());
+      }
+    }
   }
 
   public void imprimirExtrato() {
@@ -300,12 +304,12 @@ public abstract class Conta {
       // Todo EXIBIR DETALHES DA TRANSACAO
       System.out.println
       ("------------------------------------------------------------------");
-      System.out.println(extrato.indexof(i) + ".");
+      System.out.println(extrato.indexOf(i) + ".");
       //TODO formatacao de data
       // System.out.println("Data de pagamento: " + i.getData);
-      System.out.println("Pagador: "+ i.getRemetente);
+      System.out.println("Pagador: "+ i.getRemetente());
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
-      System.out.println("Destinatario: "+ i.getDestinatario);
+      System.out.println("Destinatario: "+ i.getDestinatario());
       System.out.println("Valor: " + i.getValor());
       System.out.println("-------------------------------------------------------------------");
     }
@@ -313,13 +317,16 @@ public abstract class Conta {
     
     switch(input){
       case 1: {
-
+        int index = registrador.lerInt("Insira o numero localizado na primeira linha do item do extrato que voce deseja ver");
+        imprimirDescricao(index);
+        break;
       }
       case 2: {
-        
+        break;
       }
       default:
         System.out.println("Input Invalido");
+        break;
     }
 
   }
