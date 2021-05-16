@@ -18,6 +18,7 @@ public abstract class Conta {
   protected ArrayList<String> pix = new ArrayList<String>();
   protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
+  protected Salario salario;
 
   public Conta(
         String nome,
