@@ -6,7 +6,7 @@ public abstract class Conta {
 
   protected String nome;
   protected String cpf;
-  protected String dataDeNascimento;
+  protected Calendar dataDeNascimento;
   protected String email;
   protected String telefone;
   protected String senha;
@@ -16,7 +16,7 @@ public abstract class Conta {
   protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
 
-  public Conta(String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha,
+  public Conta(String nome, String cpf, Calendar dataDeNascimento, String email, String telefone, String senha,
       String numeroDaConta, float saldo) {
     this.nome = nome;
     this.cpf = cpf;
@@ -45,11 +45,11 @@ public abstract class Conta {
     this.cpf = cpf;
   }
 
-  public String getDataDeNascimento() {
+  public Calendar getDataDeNascimento() {
     return dataDeNascimento;
   }
 
-  public void setDataDeNascimento(String dataDeNascimento) {
+  public void setDataDeNascimento(Calendar dataDeNascimento) {
     this.dataDeNascimento = dataDeNascimento;
   }
 
@@ -108,16 +108,10 @@ public abstract class Conta {
 
     // TODO: Atualizar valor com multa
 
-    Float saldo = getSaldo();
-
     if (saldo - valor >= -3000) {
       saldo -= valor;
 
-      setSaldo(saldo);
-
-      Transacao transacao = new Transacao(nome,
-          "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor, "Pagamento de boleto", "N/A",
-          valor);
+      Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor, "Pagamento de boleto", "N/A",valor);
 
       extrato.add(transacao);
     } else {
