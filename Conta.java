@@ -163,17 +163,21 @@ public abstract class Conta {
     }
   }
 
-  public void transferirPorPIX(Conta conta, float valor) {
+  public void transferirPorPIX(Conta destinatario, float valor, Calendar data) {
     //TODO: Adicionar ao arrayList de transações de quem transfere e ao de quem recebe.
     saldo -= valor;
-    conta.setSaldo(conta.getSaldo() + valor);
+    destinatario.setSaldo(destinatario.getSaldo() + valor);
 
     String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
-    Transacao transacao = new Transacao(
-        conta.nome,
-        "Transferencia PIX para " + conta.nome,
 
-        );
+    //TODO: Adicionar data
+    Transacao transacao = new Transacao(
+          nome,
+          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia PIX",
+          destinatario.nome,
+          valor
+    );
   }
 
   public void transferirPorTED(Conta conta, float valor) {
