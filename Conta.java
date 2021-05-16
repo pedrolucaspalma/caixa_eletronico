@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.Period;
 
 public abstract class Conta {
   Registrador registrador = new Registrador();
@@ -101,10 +102,19 @@ public abstract class Conta {
     this.saldo = saldo;
   }
 
-  public void pagarBoleto() {
+  //TODO: Explicar o porque de nao termos criar um objeto boleto
+  public void pagarBoleto(LocalDate dataAtual) {
     String codigoDeBoleto = registrador.lerCodigoDeBoleto("Insira o codigo de boleto");
     Float valor = registrador.lerFloat("Insira o valor do boleto: ");
-    // TODO: Ler data do boleto
+
+    LocalDate dataDeVencimento = registrador.lerData("Digite a data de vencimento do boleto");
+
+    //TODO: Calcular multa
+    if (dataDeVencimento.isAfter(dataAtual)) {
+      Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
+      int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
+    }
+
 
     // TODO: Atualizar valor com multa
 
