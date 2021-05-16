@@ -15,6 +15,7 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1:
+				//TODO: Mover para um metodo "login"
 				String numeroDaConta = input.lerString("Digite o numero da conta");
 				String senha = input.lerString("Digite a sua senha");
 
@@ -36,9 +37,16 @@ public class CaixaEletronico {
 				contas.abrirContaPoupanca();
 				menuLogin();
 				break;
+			case 5:
+				menuLogin();
+				break;
 			case 0:
 				return;
 		}
+	}
+
+	public void avancarTempo(int dias) {
+		calendar.add(Calendar.DATE, dias);
 	}
 
 	public void menuContaCorrente(ContaCorrente conta) {
@@ -46,7 +54,7 @@ public class CaixaEletronico {
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 
 		switch (lerSelecao()) {
-			case 1:
+			case 1: // Sacar
 				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar"));
 				float saldoAtual = conta.getSaldo();
 
@@ -60,7 +68,7 @@ public class CaixaEletronico {
 				menuContaCorrente(conta);
 				return;
         break;
-			case 2:
+			case 2: // Depositar
 				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja depositar"));
 				float saldoAtual = conta.getSaldo();
 
