@@ -98,8 +98,23 @@ public abstract class Conta {
   public void setSaldo(float saldo) {
     this.saldo = saldo;
   }
+
   public void pagarBoleto(){
-    registrador.ler
+    String codigoDeBoleto = registrador.lerCodigoDeBoleto("Insira o codigo de boleto");
+    Float valor = registrador.lerFloat("Insira o valor do boleto: ");
+    //TODO: Ler data do boleto
+
+    //TODO: Atualizar valor com multa
+
+    Float saldo = getSaldo();
+
+    saldo -= valor;
+
+    setSaldo(saldo);
+
+    Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: "+ codigoDeBoleto + " no valor de: R$"+ valor, "Pagamento de boleto", "N/A", valor);
+
+    extrato.add(transacao);
   }
   
   public void sacar(){

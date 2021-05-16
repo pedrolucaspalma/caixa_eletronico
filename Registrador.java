@@ -29,11 +29,11 @@ public final class Registrador {
 			if (Character.isDigit(entrada.charAt(i))) {
 				continue;
 			} else {
-				return lerInt("Entrada invalida. Por favor, digite novamente");
+				return lerFloat("Entrada invalida. Por favor, digite novamente");
 			}
 		}
 
-		return entrada.isEmpty() ? lerInt("Entrada invalida. Por favor, digite novamente") : Float.parseFloat(entrada);
+		return entrada.isEmpty() ? lerFloat("Entrada invalida. Por favor, digite novamente") : Float.parseFloat(entrada);
 	}
 
 	public int lerInt(String mensagem) {
