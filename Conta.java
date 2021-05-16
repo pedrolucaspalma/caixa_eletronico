@@ -124,19 +124,41 @@ public abstract class Conta {
     if (dataDeVencimento.isAfter(dataAtual)) {
       Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
       int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
-    }
 
+      float valorComMulta = Math.pow(valor(1 + 0.01), quantidadeDeDiasAposVencimento);
 
-    // TODO: Atualizar valor com multa
+      if (saldo - valorComMulta >= -3000) {
+        saldo -= valorComMulta;
+  
+        Transacao transacao = new Transacao(
+        nome, //Nome do pagador
+        "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta, //Descricao da transacao (detalhes para usar no extrato)
+        "Pagamento de boleto", //Tipo de transacao
+        "N/A",//Destinatario do pagamento
+        valorComMulta,//Valor pago
+        dataAtual//Data do dia de pagamento do boleto
+        );
+  
+        extrato.add(transacao);
+        System.out.println("O boleto foi pago com sucesso.");
 
-    if (saldo - valor >= -3000) {
-      saldo -= valor;
+      } else {
+        System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
+      }
 
-      Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor, "Pagamento de boleto", "N/A",valor);
+      
+    } else{
+      if (saldo - valor >= -3000) {
+        saldo -= valor;
+  
+        Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa", "Pagamento de boleto", "N/A",valor, dataAtual);
+  
+        extrato.add(transacao);
+        System.out.println("O boleto foi pago com sucesso.");
 
-      extrato.add(transacao);
-    } else {
-      System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
+      } else {
+        System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
+      }
     }
   }
 
