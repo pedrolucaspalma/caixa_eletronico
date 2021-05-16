@@ -122,7 +122,9 @@ public abstract class Conta {
 		setSaldo(saldoAtual + valor);
 		System.out.println("Deposito feito com sucesso.");
 
-    
+    Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor);
+
+    extrato.add(transacao);
   }
 
   public void adicionarPix(){
