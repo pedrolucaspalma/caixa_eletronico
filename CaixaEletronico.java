@@ -56,6 +56,7 @@ public class CaixaEletronico {
 		System.out.printf(
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
 
+		//TODO Consertar esse switch que ta todo torto
 		switch (lerSelecao()) {
 			case 1: // Sacar
 				conta.sacar();

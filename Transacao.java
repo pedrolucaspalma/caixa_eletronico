@@ -6,18 +6,18 @@ public class Transacao implements TransacaoEmConta{
     private String tipoOperacao;
     private String destinatario;
     private float valor;
-    private Calendar data;
+    // private Calendar data;
 
-    
-    public Transacao() {
-        String remetente = this.remetente;
-        String descricao = this.descricao;
-        String tipoOperacao = this.tipoOperacao;
-        String destinatario = this.destinatario;
-        float valor = this.valor;
-        Calendar data = this.data;
+    public Transacao(String remetente, String descricao, String tipoOperacao, String destinatario, float valor
+            /*Calendar data*/) {
+        this.remetente = remetente;
+        this.descricao = descricao;
+        this.tipoOperacao = tipoOperacao;
+        this.destinatario = destinatario;
+        this.valor = valor;
+        // this.data = data;
     }
-    
+
     public String getRemetente() {
         return remetente;
     }
@@ -36,11 +36,11 @@ public class Transacao implements TransacaoEmConta{
     public void setTipoOperacao(String tipoOperacao) {
         this.tipoOperacao = tipoOperacao;
     }
-    public String getDestinatário() {
-        return destinatário;
+    public String getDestinatario() {
+        return destinatario;
     }
-    public void setDestinatário(String destinatário) {
-        this.destinatário = destinatário;
+    public void setDestinatario(String destinatário) {
+        this.destinatario = destinatário;
     }
     public float getValor() {
         return valor;
@@ -48,11 +48,11 @@ public class Transacao implements TransacaoEmConta{
     public void setValor(float valor) {
         this.valor = valor;
     }
-    public Calendar getData() {
-        return data;
-    }
-    public void setData(Calendar data) {
-        this.data = data;
-    }
+    // public Calendar getData() {
+    //     return data;
+    // }
+    // public void setData(Calendar data) {
+    //     this.data = data;
+    // }
 
 }
