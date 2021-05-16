@@ -1,21 +1,20 @@
 import java.time.LocalDate;
 
-public class Transacao implements TransacaoEmConta{
+public class Transacao implements TransacaoEmConta {
     private String remetente;
     private String descricao;
     private String tipoOperacao;
     private String destinatario;
+    private LocalDate data;
     private float valor;
-    // private Calendar data;
 
-    public Transacao(String remetente, String descricao, String tipoOperacao, String destinatario, float valor
-            /*Calendar data*/) {
+    public Transacao(String remetente, String descricao, String tipoOperacao, String destinatario, float valor, LocalDate data) {
         this.remetente = remetente;
         this.descricao = descricao;
         this.tipoOperacao = tipoOperacao;
         this.destinatario = destinatario;
         this.valor = valor;
-        // this.data = data;
+        this.data = data;
     }
 
     public String getRemetente() {
@@ -48,11 +47,11 @@ public class Transacao implements TransacaoEmConta{
     public void setValor(float valor) {
         this.valor = valor;
     }
-    // public Calendar getData() {
-    //     return data;
-    // }
-    // public void setData(Calendar data) {
-    //     this.data = data;
-    // }
+    public LocalDate getData() {
+        return data;
+    }
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 
 }
