@@ -2,7 +2,6 @@
 
 ## TODAY
 
-- [ ] Tanto conta corrente quanto poupança podem ser conta-salário (o valor do salário e data de pagamento devem ser definidos neste caso)
 - [ ] Fazer depositos e saques em contas
     - [ ] A conta corrente terá um limite de cheque especial no valor de R$3000,00
 - [ ] Emitir extratos de contas
@@ -13,6 +12,7 @@
 
 ## TODO
 
+- [ ] Tanto conta corrente quanto poupança podem ser conta-salário (o valor do salário e data de pagamento devem ser definidos neste caso)
 - [ ] Atualizar mensalmente o saldo da conta poupança com o rendimento rendimento de 0,3%
 - [ ] fazer transferência entre contas por meio da agência e conta ou através do “PIX”
 - [ ] configurar o PIX, definindo qual informação será utilizada para transferência (cpf, e-mail e telefone ou criando uma chave nova)
