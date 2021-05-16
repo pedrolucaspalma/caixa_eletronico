@@ -1,14 +1,29 @@
 import java.time.LocalDate;
 
-
 public class CaixaEletronico {
 	private Registrador input = new Registrador();
 	private BancoDeContas contas = new BancoDeContas();
-	//TODO
-	//private LocalDate data = Calendar.getInstance();
+	private LocalDate data = LocalDate.now();
 
 	public int lerSelecao() {
 		return input.lerInt(".");
+	}
+
+	public void avancarTempo(int dias) {
+		data = data.plusDays(dias);
+	}
+
+	public void login() {
+		String numeroDaConta = input.lerString("Digite o numero da conta");
+		String senha = input.lerString("Digite a sua senha");
+
+		int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
+
+		if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
+			menuContaCorrente(contas.getContasCorrente().get(posConta));
+		} else {
+			System.out.printf("\nDados invalidos\n\n");
+		}
 	}
 
 	public void menuLogin() {
@@ -17,7 +32,8 @@ public class CaixaEletronico {
 				"1. Acessar conta corrente\n" +
 				"2. Acessar conta poupanca\n" +
 				"3. Abrir conta corrente\n" +
-				"4. Abrir conta poupanca\n\n" +
+				"4. Abrir conta poupanca\n" +
+				"5. Avancar no tempo\n\n" +
 				"0. Sair\n\n"
 		);
 
@@ -34,31 +50,12 @@ public class CaixaEletronico {
 				contas.abrirContaPoupanca();
 				menuLogin();
 				break;
-			//TODO: avançarTempo();
 			case 5:
 				menuLogin();
 				break;
 			case 0:
 				return;
 		}
-	}
-
-	public void login() {
-		String numeroDaConta = input.lerString("Digite o numero da conta");
-		String senha = input.lerString("Digite a sua senha");
-
-		int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
-
-		if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
-			menuContaCorrente(contas.getContasCorrente().get(posConta));
-		} else {
-			System.out.printf("\nDados invalidos\n\n");
-		}
-	}
-
-	//TODO
-	public void avancarTempo(int dias) {
-
 	}
 
 	public void menuContaPoupanca(ContaPoupanca conta){
@@ -74,7 +71,7 @@ public class CaixaEletronico {
 				"7. Avancar no tempo\n\n" +
 				"0. Encerrar Sessao\n"
 		);
-		
+
 		switch (lerSelecao()) {
 			case 1: // Sacar
 				conta.sacar();
