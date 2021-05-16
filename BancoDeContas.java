@@ -41,8 +41,26 @@ public class BancoDeContas {
         return -1;
     }
 
-    public int acharContaCorrentePorPIX() {
+    public int acharContaCorrentePorPIX(String pix) {
+        for (ContaCorrente contaCorrente : contasCorrente) {
+            for (String pixAux : contaCorrente.getPix()) {
+                if (pix.equals(pixAux)) {
+                    return contasCorrente.indexOf(contaCorrente);
+                }
+            }
+        }
+        return -1;
+    }
 
+    public int acharContaPoupancaPorPIX(String pix) {
+        for (ContaPoupanca contaPoupanca : contasPoupanca) {
+            for (String pixAux : contaPoupanca.getPix()) {
+                if (pix.equals(pixAux)) {
+                    return contasPoupanca.indexOf(contaPoupanca);
+                }
+            }
+        }
+        return -1;
     }
 
 	public void abrirContaCorrente() {
