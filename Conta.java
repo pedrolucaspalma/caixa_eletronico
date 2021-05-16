@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Conta {
   Registrador registrador = new Registrador();
@@ -301,8 +302,7 @@ public abstract class Conta {
       System.out.println
       ("------------------------------------------------------------------");
       System.out.println(extrato.indexof(i) + ".");
-      //TODO formatacao de data
-      // System.out.println("Data de pagamento: " + i.getData);
+      System.out.println("Data de pagamento: " + i.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
       System.out.println("Pagador: "+ i.getRemetente);
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
       System.out.println("Destinatario: "+ i.getDestinatario);
