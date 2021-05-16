@@ -147,12 +147,22 @@ public abstract class Conta {
     }
   }
 
-  public void transferir() {
-    System.out.printf("\nQual metodo voce deseja utilizar para fazer a tranferencia?\n\n1. PIX\n2.Agencia + Numero da Conta\n\n0. Cancelar\n\n");
+  public void transferirPorPIX(Conta conta, float valor) {
+    //TODO: Adicionar ao arrayList de transações de quem transfere e ao de quem recebe.
+    System.out.printf("\nQual metodo voce deseja utilizar para fazer a tranferencia?\n\n1. PIX\n2.TED\n\n0. Cancelar\n\n");
+
+    saldo -= valor;
+    conta.setSaldo(conta.getSaldo() + valor);
+
     switch(registrador.lerInt(".")) {
       case 1:
+        String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
+        for ()
       case 2:
       case 0:
+        return;
     }
   }
+
+  public void transferirPorTED()
 }
