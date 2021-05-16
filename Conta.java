@@ -285,6 +285,7 @@ public abstract class Conta {
   
         extrato.add(transacaoRemetente);
         destinatario.extrato.add(transacaoDestinatario);
+        System.out.printf("\nTransferencia feita com sucesso\n\n");
       } else {
         System.out.printf("\nSaldo insuficiente\n\n");
       }
@@ -323,6 +324,7 @@ public abstract class Conta {
   
         extrato.add(transacaoRemetente);
         destinatario.extrato.add(transacaoDestinatario);
+        System.out.printf("\nTransferencia feita com sucesso\n\n");
       } else {
         System.out.printf("\nSaldo insuficiente\n\n");
       }
