@@ -147,7 +147,7 @@ public class BancoDeContas {
                 );
 
                 contasPoupanca.add(contaPoupanca);
-                System.out.printf("\nConta corrente criada com sucesso!\nO seu numero da conta e %s\n\n", numeroDaConta);
+                System.out.printf("\nConta poupanca criada com sucesso!\nO seu numero da conta e %s\n\n", numeroDaConta);
             }
 		} else {
 			System.out.printf("\nO usuario ja possui uma conta poupanca!\n\n");
