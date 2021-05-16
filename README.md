@@ -59,8 +59,40 @@ A implementação de conta salário foi feita como um atributo na classe Conta. 
     Possui métodos de busca de contas por parâmetro (cpf, numero...) e métodos de abertura de conta
 ### CaixaEletronico
     Classe que lida com os menus e avança no tempo.
+
 ## Testes
 
+    Considerar que já há uma conta corrente (numero 0) e uma conta poupança (numero 1)
+
+    Entrar na conta corrente
+
+    Ativar conta salario
+
+    Avançar 32 dias
+
+    Ativar o pix (CPF)
+
+    Entrar na conta poupança
+
+    Ativar o pix (CPF) (vai dar erro)
+
+    Ativar o pix (Telefone)
+
+    Depositar 500 reais
+
+    Sacar 100 reais
+
+    Enviar pix para conta corrente de 500 reais (Digitar o CPF) (Conta ficará no -100 reais)
+
+    Sacar 3000 (vai dar erro)
+
+    Pagar Boleto 100 reais 25/06/2021
+
+    Emitir extrato
+
+    Ver detalhe de um item
+
+## ja feito ignorar
 1. Adicionar uma conta corrente
 
 2. Adicionar conta poupança logado na conta corrente (ele não deve requerer os dados de novo)
