@@ -13,10 +13,11 @@ public abstract class Conta {
   protected String agencia;
   protected String numeroDaConta;
   protected ArrayList<String> pix;
-  protected ArrayList<Transacao> extrato;
+  protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
 
-  public Conta(String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha, String numeroDaConta, float saldo) {
+  public Conta(String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha,
+      String numeroDaConta, float saldo) {
     this.nome = nome;
     this.cpf = cpf;
     this.dataDeNascimento = dataDeNascimento;
@@ -100,12 +101,12 @@ public abstract class Conta {
     this.saldo = saldo;
   }
 
-  public void pagarBoleto(){
+  public void pagarBoleto() {
     String codigoDeBoleto = registrador.lerCodigoDeBoleto("Insira o codigo de boleto");
     Float valor = registrador.lerFloat("Insira o valor do boleto: ");
-    //TODO: Ler data do boleto
+    // TODO: Ler data do boleto
 
-    //TODO: Atualizar valor com multa
+    // TODO: Atualizar valor com multa
 
     Float saldo = getSaldo();
 
@@ -113,79 +114,82 @@ public abstract class Conta {
 
     setSaldo(saldo);
 
-    Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: "+ codigoDeBoleto + " no valor de: R$"+ valor, "Pagamento de boleto", "N/A", valor);
+    Transacao transacao = new Transacao(nome,
+        "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor, "Pagamento de boleto", "N/A",
+        valor);
 
     extrato.add(transacao);
   }
 
   public ArrayList<String> getPix() {
-      return pix;
+    return pix;
   }
-  
-  public void sacar(){
+
+  public void sacar() {
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
     float saldoAtual = getSaldo();
 
-    if (saldoAtual - valor <= -3000) {
+    if (saldoAtual - valor >= -3000) {
       setSaldo(saldoAtual - valor);
       System.out.println("Saque feito com sucesso.");
     } else {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
 
-    Transacao transacao = new Transacao(nome,"Saque de R$" + valor, "Saque", "N/A", valor);
+    Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor);
 
     extrato.add(transacao);
   }
 
-  public void depositar(){
+  public void depositar() {
     float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
-		float saldoAtual = getSaldo();
+    float saldoAtual = getSaldo();
 
-		setSaldo(saldoAtual + valor);
-		System.out.println("Deposito feito com sucesso.");
+    setSaldo(saldoAtual + valor);
+    System.out.println("Deposito feito com sucesso.");
 
     Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor);
 
     extrato.add(transacao);
   }
 
-  public void adicionarPix(){
+  public void adicionarPix() {
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
 
-    switch(input){
+    switch (input) {
       case 1:
-              for(String i : pix){
-                if(i.equals(cpf)){
-                  System.out.println("CPF ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
-                }
-              }
-              pix.add(cpf);
-              System.out.println("CPF cadastrado com sucesso!");
-              break;
-      case 2: 
-              for(String i : pix){
-                if(i.equals(email)){
-                  System.out.println("Email ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
-                }
-              }
-              pix.add(email);
-              System.out.println("Email cadastrado com sucesso!");
-              break;
-      case 3: 
-              for(String i : pix){
-                if(i.equals(telefone)){
-                  System.out.println("Telefone ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
-                }
-              }
-              pix.add(telefone);
-              System.out.println("Telefone cadastrado com sucesso!");
-              break;
-      default: System.out.println("Erro, valor inválido. Operação abortada.");
-              break;
+        for (String i : pix) {
+          if (i.equals(cpf)) {
+            System.out.println("CPF ja foi cadastrado como pix nesta conta. Operação abortada.");
+            return;
+          }
+        }
+        pix.add(cpf);
+        System.out.println("CPF cadastrado com sucesso!");
+        break;
+      case 2:
+        for (String i : pix) {
+          if (i.equals(email)) {
+            System.out.println("Email ja foi cadastrado como pix nesta conta. Operação abortada.");
+            return;
+          }
+        }
+        pix.add(email);
+        System.out.println("Email cadastrado com sucesso!");
+        break;
+      case 3:
+        for (String i : pix) {
+          if (i.equals(telefone)) {
+            System.out.println("Telefone ja foi cadastrado como pix nesta conta. Operação abortada.");
+            return;
+          }
+        }
+        pix.add(telefone);
+        System.out.println("Telefone cadastrado com sucesso!");
+        break;
+      default:
+        System.out.println("Erro, valor inválido. Operação abortada.");
+        break;
     }
   }
 
@@ -195,37 +199,27 @@ public abstract class Conta {
 
     String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
 
-    //TODO: Adicionar data
-    Transacao transacao = new Transacao(
-          nome,
-          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
-          "Transferencia PIX",
-          destinatario.nome,
-          valor
-    );
+    // TODO: Adicionar data
+    Transacao transacao = new Transacao(nome, "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia PIX", destinatario.nome, valor);
   }
 
   public void transferirPorTED(Conta destinatario, float valor) {
     saldo -= valor;
     destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-    //TODO: Adicionar data
-    Transacao transacao = new Transacao(
-          nome,
-          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
-          "Transferencia TED",
-          destinatario.nome,
-          valor
-    );
+    // TODO: Adicionar data
+    Transacao transacao = new Transacao(nome, "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia TED", destinatario.nome, valor);
   }
 
-  public void imprimirExtrato(){
-    for(Transacao i : extrato){
-      //Todo EXIBIR DETALHES DA TRANSACAO
+  public void imprimirExtrato() {
+    for (Transacao i : extrato) {
+      // Todo EXIBIR DETALHES DA TRANSACAO
       // System.out.println("Data " +);
-      System.out.println("Tipo de operacao: " +i.getTipoOperacao());
-      System.out.println("Descricao: " +i.getDescricao());
-      System.out.println("Valor: " +i.getValor());
+      System.out.println("Tipo de operacao: " + i.getTipoOperacao());
+      System.out.println("Descricao: " + i.getDescricao());
+      System.out.println("Valor: " + i.getValor());
     }
   }
 }
