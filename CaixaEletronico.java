@@ -129,6 +129,7 @@ public class CaixaEletronico {
 				return;
 			case 6: // Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
 				conta.pagarBoleto(data);
+				menuContaPoupanca(conta);
 				return;
 			case 7:
 				if(conta.salario.getAtiva() == false){
