@@ -125,7 +125,7 @@ public abstract class Conta {
       Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
       int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
 
-      float valorComMulta = Math.pow(valor(1 + 0.01), quantidadeDeDiasAposVencimento);
+      float valorComMulta = (float)(Math.pow(valor * (1 + 0.01), quantidadeDeDiasAposVencimento));
 
       if (saldo - valorComMulta >= -3000) {
         saldo -= valorComMulta;
@@ -291,7 +291,7 @@ public abstract class Conta {
     }
   }
 
-  public int imprimirDescricao(int index){
+  public void imprimirDescricao(int index){
     for(Transacao i : extrato){
       if(extrato.indexOf(i) == index){
         System.out.println(i.getDescricao());
