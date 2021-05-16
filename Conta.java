@@ -257,7 +257,7 @@ public abstract class Conta {
   }
 
   public void transferirPorPIX(Conta destinatario, float valor, LocalDate data) {
-    if (this == destinatario) {
+    if (this != destinatario) {
       if ((saldo - valor) >= -3000.) {
         saldo -= valor;
         destinatario.setSaldo(destinatario.getSaldo() + valor);
@@ -291,7 +291,7 @@ public abstract class Conta {
   }
 
   public void transferirPorTED(Conta destinatario, float valor, LocalDate data) {
-    if (this == destinatario) {
+    if (this != destinatario) {
       if ((saldo - valor) >= -3000.) {
         System.out.println("SaldoR antes: " + saldo);
         System.out.println("SaldoD antes: " + destinatario.getSaldo());
