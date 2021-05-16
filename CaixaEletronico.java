@@ -73,7 +73,7 @@ public class CaixaEletronico {
 				menuLogin();
 				break;
 			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
-				conta.adicionarPix();
+				conta.adicionarPix(contas);
 				menuContaCorrente(conta);
 				break;
 			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)

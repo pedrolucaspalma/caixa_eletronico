@@ -2,7 +2,7 @@
 
 ## TODAY
 
-- [ ] Fazer depositos e saques em contas
+- [x] Fazer depositos e saques em contas
     - [ ] A conta corrente terá um limite de cheque especial no valor de R$3000,00
 - [ ] Emitir extratos de contas
     - [ ] Para cada linha do extrato a data, o tipo de operação, descrição e o valor devem ser exibidos
