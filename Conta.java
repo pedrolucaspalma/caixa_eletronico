@@ -13,12 +13,22 @@ public abstract class Conta {
   protected String senha;
   protected String agencia;
   protected String numeroDaConta;
+  protected LocalDate dataDeCriacao;
   protected ArrayList<String> pix;
   protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
 
-  public Conta(String nome, String cpf, LocalDate dataDeNascimento, String email, String telefone, String senha,
-      String numeroDaConta, float saldo) {
+  public Conta(
+        String nome,
+        String cpf,
+        LocalDate dataDeNascimento,
+        String email,
+        String telefone,
+        String senha,
+        String numeroDaConta,
+        LocalDate dataDeCriacao,
+        float saldo
+  ) {
     this.nome = nome;
     this.cpf = cpf;
     this.dataDeNascimento = dataDeNascimento;
@@ -27,6 +37,7 @@ public abstract class Conta {
     this.senha = senha;
     this.agencia = "0001";
     this.numeroDaConta = numeroDaConta;
+    this.dataDeCriacao = dataDeCriacao;
     this.saldo = saldo;
   }
 

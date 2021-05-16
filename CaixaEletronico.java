@@ -10,7 +10,12 @@ public class CaixaEletronico {
 	}
 
 	public void avancarTempo(int dias) {
+		LocalDate antigaData = data;
 		data = data.plusDays(dias);
+
+		for (ContaPoupanca conta : contas.getContasPoupanca()) {
+			conta.atualizarRendimento(antigaData, data);
+		}
 	}
 
 	public void login() {
