@@ -221,6 +221,7 @@ public abstract class Conta {
         if (contas.acharContaPoupancaPorPIX(cpf) == -1) {
           if (contas.acharContaCorrentePorPIX(cpf) == -1) {
             pix.add(cpf);
+            System.out.println("PIX cadastrado com sucesso.");
           } else {
             System.out.println("CPF ja cadastrado como PIX. Selecione outra forma de chave.");
           }
@@ -231,7 +232,8 @@ public abstract class Conta {
       case 2:
         if (contas.acharContaPoupancaPorPIX(email) == -1) {
           if (contas.acharContaCorrentePorPIX(email) == -1) {
-            pix.add(telefone);
+            pix.add(email);
+            System.out.println("PIX cadastrado com sucesso.");
           } else {
             System.out.println("Email ja cadastrado como PIX. Selecione outra forma de chave.");
           }
@@ -243,6 +245,7 @@ public abstract class Conta {
         if (contas.acharContaPoupancaPorPIX(telefone) == -1) {
           if (contas.acharContaCorrentePorPIX(telefone) == -1) {
             pix.add(telefone);
+            System.out.println("PIX cadastrado com sucesso.");
           } else {
             System.out.println("Telefone já cadastrado como PIX. Selecione outra forma de chave.");
           }
