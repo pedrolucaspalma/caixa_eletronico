@@ -91,8 +91,9 @@ public class CaixaEletronico {
 		}
 	}
 
-	public void menuContaPoupanca(ContaPoupanca conta){
-		System.out.printf("\nOla, %s\nTipo de conta: Poupanca\nSaldo: %s\n\n", conta.getNome(), conta.getSaldo());
+	public void menuContaPoupanca(ContaPoupanca conta) {
+		DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
+		System.out.printf("\nOla, %s\nTipo de conta: Poupanca\nSaldo: %s\n\n", conta.getNome(), formatacaoDecimal.format(conta.getSaldo()));
 		System.out.println(
 				"Digite um desses numeros:\n\n" +
 				"1. Sacar\n" + 

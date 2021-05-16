@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -138,10 +139,19 @@ public abstract class Conta {
 
       if (saldo - valorComMulta >= -3000) {
         saldo -= valorComMulta;
+
+		    DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
   
         Transacao transacao = new Transacao(
             nome, //Nome do pagador
-            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " com acrescimo de R$"+ (valorComMulta - valor) + " Totalizando R$" + valorComMulta,
+            "Pagamento de boleto numero: " +
+            codigoDeBoleto +
+            " no valor de: R$" +
+            formatacaoDecimal.format(valor) +
+            " com acrescimo de R$" +
+            formatacaoDecimal.format(valorComMulta - valor) +
+            " Totalizando R$" +
+            formatacaoDecimal.format(valorComMulta),
             "Pagamento de boleto", //Tipo de transacao
             "N/A",//Destinatario do pagamento
             valorComMulta,//Valor pago
@@ -159,10 +169,16 @@ public abstract class Conta {
     } else {
       if (saldo - valor >= -3000) {
         saldo -= valor;
+
+		    DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
   
         Transacao transacao = new Transacao(
             nome,
-            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa",
+            "Pagamento de boleto numero: " +
+            codigoDeBoleto +
+            " no valor de: R$" +
+            formatacaoDecimal.format(valor) +
+            " .Sem acrescimo de multa",
             "Pagamento de boleto",
             "N/A",
             valor,
@@ -194,7 +210,9 @@ public abstract class Conta {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
 
-    Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor, data);
+    DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
+
+    Transacao transacao = new Transacao(nome, "Saque de R$" + formatacaoDecimal.format(valor), "Saque", "N/A", valor, data);
 
     extrato.add(transacao);
   }
@@ -207,7 +225,9 @@ public abstract class Conta {
     setSaldo(saldoAtual + valor);
     System.out.println("Deposito feito com sucesso.");
 
-    Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor, data);
+    DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
+
+    Transacao transacao = new Transacao(nome, "Deposito de R$" + formatacaoDecimal.format(valor), "Deposito", "N/A", valor, data);
 
     extrato.add(transacao);
   }
@@ -264,10 +284,12 @@ public abstract class Conta {
       if ((saldo - valor) >= -3000.) {
         saldo -= valor;
         destinatario.setSaldo(destinatario.getSaldo() + valor);
+
+        DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
   
         Transacao transacaoRemetente = new Transacao(
             nome,
-            "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+            "Transferencia PIX para " + destinatario.nome + "no valor de R$" + formatacaoDecimal.format(valor),
             "Transferencia PIX",
             destinatario.nome,
             valor,
@@ -276,7 +298,7 @@ public abstract class Conta {
   
         Transacao transacaoDestinatario = new Transacao(
           nome,
-          "Transferencia PIX de " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia PIX de " + destinatario.nome + "no valor de R$" + formatacaoDecimal.format(valor),
           "Transferencia PIX",
           destinatario.nome,
           valor,
@@ -299,10 +321,12 @@ public abstract class Conta {
       if ((saldo - valor) >= -3000.) {
         saldo -= valor;
         destinatario.setSaldo(destinatario.getSaldo() + valor);
+
+        DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
   
         Transacao transacaoRemetente = new Transacao(
             nome,
-            "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+            "Transferencia TED para " + destinatario.nome + "no valor de R$" + formatacaoDecimal.format(valor),
             "Transferencia TED",
             destinatario.nome,
             valor,
@@ -311,7 +335,7 @@ public abstract class Conta {
   
         Transacao transacaoDestinatario = new Transacao(
           nome,
-          "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia TED de " + destinatario.nome + "no valor de R$" + formatacaoDecimal.format(valor),
           "Transferencia TED",
           destinatario.nome,
           valor,
@@ -345,6 +369,9 @@ public abstract class Conta {
     System.out.println("-------------------------Extratos-----------------------------------");
     for (Transacao i : extrato) {
       // Todo EXIBIR DETALHES DA TRANSACAO
+
+      DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
+
       System.out.println
       ("------------------------------------------------------------------");
       System.out.println(extrato.indexOf(i) + ".");
@@ -352,7 +379,7 @@ public abstract class Conta {
       System.out.println("Pagador: "+ i.getRemetente());
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
       System.out.println("Destinatario: "+ i.getDestinatario());
-      System.out.println("Valor: " + i.getValor());
+      System.out.println("Valor: " + formatacaoDecimal.format(i.getValor()));
       System.out.println("-------------------------------------------------------------------");
     }
     int input = registrador.lerInt("Voce deseja ver detalhes de um item do extrato?\n1.Sim\n2.Nao\n");
