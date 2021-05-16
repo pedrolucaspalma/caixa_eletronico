@@ -27,7 +27,7 @@ public class CaixaEletronico {
 		}
 	}
 
-	public void login() {
+	public void loginContaCorrente() {
 		String numeroDaConta = registrador.lerString("Digite o numero da conta");
 		String senha = registrador.lerString("Digite a sua senha");
 
@@ -35,6 +35,19 @@ public class CaixaEletronico {
 
 		if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
 			menuContaCorrente(contas.getContasCorrente().get(posConta));
+		} else {
+			System.out.printf("\nDados invalidos\n\n");
+		}
+	}
+
+	public void loginContaPoupanca() {
+		String numeroDaConta = registrador.lerString("Digite o numero da conta");
+		String senha = registrador.lerString("Digite a sua senha");
+
+		int posConta = contas.acharContaPoupancaPorNumeroDaConta(numeroDaConta);
+
+		if (posConta != -1 && contas.getContasPoupanca().get(posConta).senha.equals(senha)) {
+			menuContaPoupanca(contas.getContasPoupanca().get(posConta));
 		} else {
 			System.out.printf("\nDados invalidos\n\n");
 		}
@@ -53,7 +66,11 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1:
-				login();
+				loginContaCorrente();
+				menuLogin();
+				return;
+			case 2:
+				loginContaPoupanca();
 				menuLogin();
 				return;
 			case 3:
