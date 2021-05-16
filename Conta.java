@@ -130,12 +130,12 @@ public abstract class Conta {
         saldo -= valorComMulta;
   
         Transacao transacao = new Transacao(
-        nome, //Nome do pagador
-        "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta, //Descricao da transacao (detalhes para usar no extrato)
-        "Pagamento de boleto", //Tipo de transacao
-        "N/A",//Destinatario do pagamento
-        valorComMulta,//Valor pago
-        dataAtual//Data do dia de pagamento do boleto
+            nome, //Nome do pagador
+            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta, //Descricao da transacao (detalhes para usar no extrato)
+            "Pagamento de boleto", //Tipo de transacao
+            "N/A",//Destinatario do pagamento
+            valorComMulta,//Valor pago
+            dataAtual//Data do dia de pagamento do boleto
         );
   
         extrato.add(transacao);
@@ -276,16 +276,37 @@ public abstract class Conta {
     }
   }
 
+  public int imprimirDescricao(int index){
+
+  }
+
   public void imprimirExtrato() {
     System.out.println("-------------------------Extratos-----------------------------------");
     for (Transacao i : extrato) {
       // Todo EXIBIR DETALHES DA TRANSACAO
-      System.out.println("------------------------------------------------------------------");
-      // System.out.println("Data " +);
-      System.out.println();
+      System.out.println
+      ("------------------------------------------------------------------");
+      System.out.println(extrato.indexof(i) + ".");
+      //TODO formatacao de data
+      // System.out.println("Data de pagamento: " + i.getData);
+      System.out.println("Pagador: "+ i.getRemetente);
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
+      System.out.println("Destinatario: "+ i.getDestinatario);
       System.out.println("Valor: " + i.getValor());
       System.out.println("-------------------------------------------------------------------");
     }
+    int input = registrador.lerInt("Voce deseja ver detalhes de um item do extrato?\n1.Sim\n2.Nao\n");
+    
+    switch(input){
+      case 1: {
+
+      }
+      case 2: {
+        
+      }
+      default:
+        System.out.println("Input Invalido");
+    }
+
   }
 }
