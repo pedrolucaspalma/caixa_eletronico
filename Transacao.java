@@ -38,8 +38,8 @@ public class Transacao implements TransacaoEmConta {
     public String getDestinatario() {
         return destinatario;
     }
-    public void setDestinatario(String destinatário) {
-        this.destinatario = destinatário;
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
     }
     public float getValor() {
         return valor;
