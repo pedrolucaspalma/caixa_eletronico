@@ -173,7 +173,7 @@ public abstract class Conta {
     return pix;
   }
 
-  public void sacar() {
+  public void sacar(LocalDate data) {
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
     float saldoAtual = getSaldo();
 
@@ -185,12 +185,12 @@ public abstract class Conta {
     }
 
     //TODO adicionar data da transacao
-    Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor);
+    Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor, data);
 
     extrato.add(transacao);
   }
 
-  public void depositar() {
+  public void depositar(LocalDate data) {
     float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
     float saldoAtual = getSaldo();
 
@@ -198,7 +198,7 @@ public abstract class Conta {
     System.out.println("Deposito feito com sucesso.");
 
     //TODO adicionar data da transacao
-    Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor);
+    Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor, data);
 
     extrato.add(transacao);
   }
@@ -253,24 +253,38 @@ public abstract class Conta {
 
       String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
 
-      // TODO: Adicionar data
-      Transacao transacao = new Transacao(nome,
-          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor, "Transferencia PIX",
-          destinatario.nome, valor);
+      Transacao transacao = new Transacao(
+          nome,
+          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia PIX",
+          destinatario.nome,
+          valor,
+          data
+      );
+
+      //TODO: Adicionar ao extrato do destinatario
+      extrato.add(transacao);
     } else {
       System.out.printf("\nSaldo insuficiente\n\n");
     }
   }
 
-  public void transferirPorTED(Conta destinatario, float valor) {
+  public void transferirPorTED(Conta destinatario, float valor, LocalDate data) {
     if ((saldo - valor) >= -3000.) {
       saldo -= valor;
       destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-      // TODO: Adicionar data
-      Transacao transacao = new Transacao(nome,
-          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor, "Transferencia TED",
-          destinatario.nome, valor);
+      Transacao transacao = new Transacao(
+          nome,
+          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia TED",
+          destinatario.nome,
+          valor,
+          data
+      );
+
+      //TODO: Adicionar ao extrato do destinatario
+      extrato.add(transacao);
     } else {
       System.out.printf("\nSaldo insuficiente\n\n");
     }

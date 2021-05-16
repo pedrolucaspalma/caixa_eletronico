@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 
 public class CaixaEletronico {
-	private Registrador input = new Registrador();
+	private Registrador registrador = new Registrador();
 	private BancoDeContas contas = new BancoDeContas();
 	private LocalDate data = LocalDate.now();
 
 	public int lerSelecao() {
-		return input.lerInt(".");
+		return registrador.lerInt(".");
 	}
 
 	public void avancarTempo(int dias) {
@@ -19,8 +19,8 @@ public class CaixaEletronico {
 	}
 
 	public void login() {
-		String numeroDaConta = input.lerString("Digite o numero da conta");
-		String senha = input.lerString("Digite a sua senha");
+		String numeroDaConta = registrador.lerString("Digite o numero da conta");
+		String senha = registrador.lerString("Digite a sua senha");
 
 		int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
 
@@ -79,11 +79,11 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1: // Sacar
-				conta.sacar();
+				conta.sacar(data);
 				menuContaPoupanca(conta);
 				return;
 			case 2: // Depositar
-				conta.depositar();
+				conta.depositar(data);
 				menuContaPoupanca(conta);
 				break;
 			case 3: // Emitir Extrato
@@ -107,6 +107,53 @@ public class CaixaEletronico {
 				System.out.println("Input Invalido!");
 				menuContaPoupanca(conta);
 				break;
+		}
+	}
+
+	public void menuTransferencia(ContaCorrente conta) {
+		System.out.println(
+				"Digite um desses numeros:\n\n" +
+				"1. Transferencia PIX\n" +
+				"2. Transferencia TED\n\n" +
+				"0. Cancelar\n"
+		);
+
+		switch(registrador.lerInt(".")) {
+			case 1: {
+				String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
+				Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
+
+				int indexCC = contas.acharContaCorrentePorPIX(chavePIX);
+				int indexCP = contas.acharContaPoupancaPorPIX(chavePIX);
+
+				if (indexCC != -1) {
+					ContaCorrente destinatario = contas.getContasCorrente().get(indexCC);
+					conta.transferirPorPIX(destinatario, valor, data);
+				} else if (indexCP != -1) {
+					ContaPoupanca destinatario = contas.getContasPoupanca().get(indexCP);
+					conta.transferirPorPIX(destinatario, valor, data);
+				} else {
+					System.out.println("Chave PIX nao encontrada");
+				}
+				break;
+			}
+			case 2: {
+				String cpf = registrador.lerCPF("Digite o cpf do destinatario");
+				Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
+
+				int indexCC = contas.acharContaCorrentePorCPF(cpf);
+				int indexCP = contas.acharContaPoupancaPorCPF(cpf);
+
+				if (indexCC != -1) {
+					ContaCorrente destinatario = contas.getContasCorrente().get(indexCC);
+					conta.transferirPorTED(destinatario, valor, data);
+				} else if (indexCP != -1) {
+					ContaPoupanca destinatario = contas.getContasPoupanca().get(indexCP);
+					conta.transferirPorTED(destinatario, valor, data);
+				} else {
+					System.out.println("cpf nao encontrada");
+				}
+			}
 		}
 	}
 
