@@ -291,12 +291,14 @@ public abstract class Conta {
     }
   }
 
-  public int imprimirDescricao(int index){
+  public void imprimirDescricao(int index){
     for(Transacao i : extrato){
       if(extrato.indexOf(i) == index){
         System.out.println(i.getDescricao());
+        return;
       }
     }
+    System.out.println("O indice inserido nao corresponde a um item do extrato");
   }
 
   public void imprimirExtrato() {
@@ -317,7 +319,7 @@ public abstract class Conta {
     
     switch(input){
       case 1: {
-        int index = registrador.lerInt("Insira o numero localizado na primeira linha do item do extrato que voce deseja ver");
+        int index = registrador.lerInt("Insira o indice localizado na primeira linha do item do extrato que voce deseja ver");
         imprimirDescricao(index);
         break;
       }
