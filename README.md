@@ -59,7 +59,7 @@ A implementação de conta salário foi feita como um atributo na classe Conta. 
 ### CaixaEletronico
     Classe que lida com os menus e avança no tempo.
 ## Testes
-
+"""
 1. Adicionar uma conta corrente
 2. Adicionar conta poupança logado na conta corrente (ele não deve requerer os dados de novo)
 3. Fazer a conta corrente ativar a conta salário
@@ -85,3 +85,4 @@ A implementação de conta salário foi feita como um atributo na classe Conta. 
     7.6. Olhar item do extrato
 8. Na conta corrente:
     8.1. Olhar se Transferencias recebidas aparecem no extrato
+"""
