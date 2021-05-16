@@ -1,8 +1,9 @@
-// import java.util.Calendar;
+import java.time.LocalDate;
+
 
 public interface TransacaoEmConta {
     float getValor();
     String getDescricao();
     String getTipoOperacao();
-    // Calendar getData();
+    //LocalDate getData();
 }
