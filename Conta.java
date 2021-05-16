@@ -134,7 +134,7 @@ public abstract class Conta {
       Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
       int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
 
-      float valorComMulta = (float)(Math.pow(valor * (1 + 0.01), quantidadeDeDiasAposVencimento));
+      float valorComMulta = (float)(valor *  Math.pow((1 + 0.01), quantidadeDeDiasAposVencimento));
 
       if (saldo - valorComMulta >= -3000) {
         saldo -= valorComMulta;
@@ -380,7 +380,7 @@ public abstract class Conta {
     DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     String antigaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-    String novaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    String novaDataString = novaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
     LocalDate antigaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + antigaDataString.substring(2), formatoData);
     LocalDate novaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + novaDataString.substring(2), formatoData);
@@ -388,7 +388,7 @@ public abstract class Conta {
     Period periodoSalario = Period.between(antigaDataConvertida, novaDataConvertida);
 
     int meses = periodoSalario.getMonths();
-    System.out.println(meses);
+    System.out.println(meses + (salario.getDiaDoPagamento() + antigaDataString.substring(2)) + (salario.getDiaDoPagamento() + novaDataString.substring(2)));
 
     for (int i = 0; i < meses; i++) {
       saldo += salario.getPagamento();

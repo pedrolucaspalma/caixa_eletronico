@@ -20,6 +20,8 @@ public class ContaPoupanca extends Conta {
         Period periodoRendimento = Period.between(antigaData, novaData);
         int meses = periodoRendimento.getMonths();
 
-        saldo = (float)(Math.pow(saldo * (1 + 0.03), meses));
+        for (int i = 0; i < meses; i++) {
+            saldo *= 1.03;
+        }
     }
 }
