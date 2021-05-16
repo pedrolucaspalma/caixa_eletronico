@@ -150,39 +150,42 @@ public abstract class Conta {
     extrato.add(transacao);
   }
 
-  public void adicionarPix(){
+  public void adicionarPix(BancoDeContas contas){
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
 
     switch(input){
       case 1:
-              for(String i : pix){
-                if(i.equals(cpf)){
-                  System.out.println("CPF ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
+              if(contas.acharContaPoupancaPorPIX(cpf) == -1){
+                if(contas.acharContaCorrentePorPIX(cpf) == -1){
+                  pix.add(cpf);
+                } else{
+                  System.out.println("CPF ja cadastrado como PIX. Selecione outra forma de chave.");
                 }
+              } else {
+                System.out.println("CPF ja cadastrado como PIX. Selecione outra forma de chave.");
               }
-              pix.add(cpf);
-              System.out.println("CPF cadastrado com sucesso!");
               break;
       case 2: 
-              for(String i : pix){
-                if(i.equals(email)){
-                  System.out.println("Email ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
-                }
+              if(contas.acharContaPoupancaPorPIX(email) == -1){
+                if(contas.acharContaCorrentePorPIX(email)== -1){
+                  pix.add(telefone);
+                } else{
+                  System.out.println("Email ja cadastrado como PIX. Selecione outra forma de chave.");
+                } 
+              } else {
+                System.out.println("Email ja cadastrado como PIX. Selecione outra forma de chave");
               }
-              pix.add(email);
-              System.out.println("Email cadastrado com sucesso!");
               break;
       case 3: 
-              for(String i : pix){
-                if(i.equals(telefone)){
-                  System.out.println("Telefone ja foi cadastrado como pix nesta conta. Operação abortada.");
-                  return;
+              if(contas.acharContaPoupancaPorPIX(telefone) == -1){
+                if(contas.acharContaCorrentePorPIX(telefone) == -1){
+                  pix.add(telefone);
+                } else{
+                  System.out.println("Telefone já cadastrado como PIX. Selecione outra forma de chave.");
                 }
+              } else{
+                System.out.println("Telefone já cadastrado como PIX. Selecione outra forma de chave.");
               }
-              pix.add(telefone);
-              System.out.println("Telefone cadastrado com sucesso!");
               break;
       default: System.out.println("Erro, valor inválido. Operação abortada.");
               break;
