@@ -1,5 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -63,43 +61,15 @@ public final class Registrador {
 	public LocalDate lerData(String mensagem) {
 		System.out.printf("%s [dd/mm/aaaa]: ", mensagem);
 		String stringData = input.nextLine();
-		
-		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate data = LocalDate.parse(stringData, formatoData);
 
-		System.out.println("Data: " + data);
-		return data;
-
-
-		/*
-			 if (stringData.length() != 10) {
-			 return lerData("Data invalida. Por favor, digite a data novamente");
-			 }
-
-			 for (int i = 0; i < stringData.length(); i++) {
-			 if (i == 2 || i == 5) {
-			 if (stringData.charAt(i) == '/') {
-			 continue;
-			 } else {
-			 return lerData("Data invalida. Por favor, digite a data novamente");
-			 }
-			 } else {
-			 if (Character.isDigit((stringData.charAt(i)))) {
-			 continue;
-			 } else {
-			 return lerData("Data invalida. Por favor, digite a data novamente");
-			 }
-			 }
-			 }
-
-			 if (!stringData.isEmpty()) {
-
-			 }
-
-			 } else {
-			 return lerData("Data invalida. Por favor, digite a data novamente");
-			 }
-		*/
+		try {
+			DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			LocalDate data = LocalDate.parse(stringData, formatoData);
+			System.out.println("Data: " + data);
+			return data;
+		} catch (Exception e) {
+			return lerData("Data invalida. Por favor, digite a data novamente");
+		}
 	}
 
 	public String lerCPF(String mensagem) {
