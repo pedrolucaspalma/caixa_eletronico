@@ -120,7 +120,6 @@ public abstract class Conta {
     } else {
       System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
     }
-
   }
 
   public ArrayList<String> getPix() {
