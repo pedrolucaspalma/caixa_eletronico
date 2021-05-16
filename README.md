@@ -4,10 +4,10 @@
 
 ### DOING
 
-- [ ] Entrada de conta de salário deve ser simulada mês a mês conforme o valor do salário e data de pagamento
 
 ## DONE
 
+- [x] Entrada de conta de salário deve ser simulada mês a mês conforme o valor do salário e data de pagamento
 - [x] Tanto conta corrente quanto poupança podem ser conta-salário (o valor do salário e data de pagamento devem ser definidos neste caso)
 - [x] fazer transferência entre contas por meio da agência e conta ou através do “PIX”
 - [x] Atualizar mensalmente o saldo da conta poupança com o rendimento rendimento de 0,3%

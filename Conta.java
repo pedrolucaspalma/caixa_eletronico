@@ -376,7 +376,7 @@ public abstract class Conta {
     salario = new Salario(true, registrador.lerFloat("Insira o seu pagamento"), registrador.lerString("Insira o dia da sua data de pagamento [dd]"));
   }
 
-  public void atualizarSalario(Salario salario, LocalDate antigaData, LocalDate novaData) {
+  public void atualizarSalario(LocalDate antigaData, LocalDate novaData) {
     DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     String antigaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -386,7 +386,7 @@ public abstract class Conta {
     LocalDate novaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + novaDataString.substring(1), formatoData);
 
     Period periodoSalario = Period.between(antigaDataConvertida, novaDataConvertida);
-    
+
     int meses = periodoSalario.getMonths();
 
     for (int i = 0; i < meses; i++) {
