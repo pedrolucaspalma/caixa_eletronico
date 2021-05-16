@@ -252,7 +252,7 @@ public abstract class Conta {
 
       String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
 
-      Transacao transacao = new Transacao(
+      Transacao transacaoRemetente = new Transacao(
           nome,
           "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
           "Transferencia PIX",
@@ -261,8 +261,17 @@ public abstract class Conta {
           data
       );
 
-      //TODO: Adicionar ao extrato do destinatario
-      extrato.add(transacao);
+      Transacao transacaoDestinatario = new Transacao(
+        nome,
+        "Transferencia PIX de " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia PIX",
+        destinatario.nome,
+        valor,
+        data
+    );
+
+      extrato.add(transacaoRemetente);
+      destinatario.extrato.add(transacaoDestinatario);
     } else {
       System.out.printf("\nSaldo insuficiente\n\n");
     }
@@ -273,17 +282,35 @@ public abstract class Conta {
       saldo -= valor;
       destinatario.setSaldo(destinatario.getSaldo() + valor);
 
-      Transacao transacao = new Transacao(
-          nome,
-          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
-          "Transferencia TED",
-          destinatario.nome,
-          valor,
-          data
-      );
+    Transacao transacao = new Transacao(
+        nome,
+        "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia TED",
+        destinatario.nome,
+        valor,
+        data
+    );
 
-      //TODO: Adicionar ao extrato do destinatario
-      extrato.add(transacao);
+    Transacao transacaoRemetente = new Transacao(
+        nome,
+        "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+        "Transferencia TED",
+        destinatario.nome,
+        valor,
+        data
+    );
+
+    Transacao transacaoDestinatario = new Transacao(
+      nome,
+      "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
+      "Transferencia TED",
+      destinatario.nome,
+      valor,
+      data
+    );
+
+      extrato.add(transacaoRemetente);
+      destinatario.extrato.add(transacaoDestinatario);
     } else {
       System.out.printf("\nSaldo insuficiente\n\n");
     }
