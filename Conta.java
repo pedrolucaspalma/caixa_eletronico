@@ -109,13 +109,18 @@ public abstract class Conta {
 
     Float saldo = getSaldo();
 
-    saldo -= valor;
+    if(saldo - valor >= -3000){
+      saldo -= valor;
 
-    setSaldo(saldo);
+      setSaldo(saldo);
+  
+      Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: "+ codigoDeBoleto + " no valor de: R$"+ valor, "Pagamento de boleto", "N/A", valor);
+  
+      extrato.add(transacao);
+    } else {
+      System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
+    }
 
-    Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: "+ codigoDeBoleto + " no valor de: R$"+ valor, "Pagamento de boleto", "N/A", valor);
-
-    extrato.add(transacao);
   }
 
   public ArrayList<String> getPix() {
