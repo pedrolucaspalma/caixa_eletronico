@@ -4,9 +4,19 @@ public class Transacao implements TransacaoEmConta{
     private String remetente;
     private String descricao;
     private String tipoOperacao;
-    private String destinatário;
+    private String destinatario;
     private float valor;
     private Calendar data;
+
+    
+    public Transacao() {
+        String remetente = this.remetente;
+        String descricao = this.descricao;
+        String tipoOperacao = this.tipoOperacao;
+        String destinatario = this.destinatario;
+        float valor = this.valor;
+        Calendar data = this.data;
+    }
     
     public String getRemetente() {
         return remetente;

@@ -160,20 +160,19 @@ public abstract class Conta {
 
   public void transferirPorPIX(Conta conta, float valor) {
     //TODO: Adicionar ao arrayList de transações de quem transfere e ao de quem recebe.
-    System.out.printf("\nQual metodo voce deseja utilizar para fazer a tranferencia?\n\n1. PIX\n2.TED\n\n0. Cancelar\n\n");
-
     saldo -= valor;
     conta.setSaldo(conta.getSaldo() + valor);
 
-    switch(registrador.lerInt(".")) {
-      case 1:
-        String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
-        for ()
-      case 2:
-      case 0:
-        return;
-    }
+    String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
+    Transacao transacao = new Transacao(
+        conta.nome,
+        "Transferencia PIX para " + conta.nome,
+
+        );
   }
 
-  public void transferirPorTED()
+  public void transferirPorTED(Conta conta, float valor) {
+    saldo -= valor;
+    conta.setSaldo(conta.getSaldo() + valor);
+  }
 }
