@@ -41,6 +41,10 @@ public class BancoDeContas {
         return -1;
     }
 
+    public int acharContaCorrentePorPIX() {
+
+    }
+
 	public void abrirContaCorrente() {
         String cpf = registrador.lerCPF("Insira o CPF");
 
