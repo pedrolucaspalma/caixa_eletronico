@@ -109,7 +109,6 @@ public abstract class Conta {
 
     LocalDate dataDeVencimento = registrador.lerData("Digite a data de vencimento do boleto");
 
-    //TODO: Calcular multa
     if (dataDeVencimento.isAfter(dataAtual)) {
       Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
       int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
@@ -140,7 +139,15 @@ public abstract class Conta {
       if (saldo - valor >= -3000) {
         saldo -= valor;
   
-        Transacao transacao = new Transacao(nome, "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa", "Pagamento de boleto", "N/A",valor, dataAtual);
+        Transacao transacao = new Transacao(
+
+          nome,
+          "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa",
+          "Pagamento de boleto",
+          "N/A",
+          valor,
+          dataAtual
+          );
   
         extrato.add(transacao);
         System.out.println("O boleto foi pago com sucesso.");
@@ -166,6 +173,7 @@ public abstract class Conta {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
 
+    //TODO adicionar data da transacao
     Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor);
 
     extrato.add(transacao);
@@ -178,6 +186,7 @@ public abstract class Conta {
     setSaldo(saldoAtual + valor);
     System.out.println("Deposito feito com sucesso.");
 
+    //TODO adicionar data da transacao
     Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor);
 
     extrato.add(transacao);
@@ -262,8 +271,8 @@ public abstract class Conta {
       // Todo EXIBIR DETALHES DA TRANSACAO
       System.out.println("------------------------------------------------------------------");
       // System.out.println("Data " +);
+      System.out.println();
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
-      System.out.println("Descricao: " + i.getDescricao());
       System.out.println("Valor: " + i.getValor());
       System.out.println("-------------------------------------------------------------------");
     }
