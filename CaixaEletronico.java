@@ -15,6 +15,15 @@ public class CaixaEletronico {
 
 		for (ContaPoupanca conta : contas.getContasPoupanca()) {
 			conta.atualizarRendimento(antigaData, data);
+			if (conta.salario.getAtiva()) {
+				conta.atualizarSalario(antigaData, data);
+			}
+		}
+
+		for (ContaCorrente conta : contas.getContasCorrente()) {
+			if (conta.salario.getAtiva()) {
+				conta.atualizarSalario(antigaData, data);
+			}
 		}
 	}
 

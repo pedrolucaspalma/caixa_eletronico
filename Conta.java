@@ -117,6 +117,21 @@ public abstract class Conta {
     this.saldo = saldo;
   }
 
+  public Salario getSalario() {
+    return salario;
+  }
+
+  public void atualizarSalario(LocalDate antigaData, LocalDate novaData) {
+    Period periodoDataCriacaoDataAntiga = Period.between(dataDeCriacao, antigaData);
+    Period periodoDataCriacaoDataNova = Period.between(dataDeCriacao, novaData);
+    Period periodoSalario = periodoDataCriacaoDataNova.minus(periodoDataCriacaoDataAntiga);
+    int meses = periodoSalario.getMonths();
+
+    for (int i = 0; i < meses; i++) {
+      saldo += salario.getPagamento();
+    }
+  }
+
   //TODO: Explicar o porque de nao termos criar um objeto boleto
   public void pagarBoleto(LocalDate dataAtual) {
     Registrador registrador = new Registrador();
@@ -178,7 +193,6 @@ public abstract class Conta {
   }
 
   public void sacar(LocalDate data) {
-    //TODO: CORRIGIR LERFLOAT
     Registrador registrador = new Registrador();
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
     float saldoAtual = getSaldo();
