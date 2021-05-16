@@ -12,8 +12,14 @@ public class CaixaEletronico {
 	}
 
 	public void menuLogin() {
-		System.out.printf(
-				"Digite um desses numeros:\n\n1. Acessar conta corrente\n2. Acessar conta poupanca\n3. Abrir conta corrente\n4. Abrir conta poupanca\n\n0. Sair\n\n");
+		System.out.println(
+				"Digite um desses numeros:\n\n" +
+				"1. Acessar conta corrente\n" +
+				"2. Acessar conta poupanca\n" +
+				"3. Abrir conta corrente\n" +
+				"4. Abrir conta poupanca\n\n" +
+				"0. Sair\n\n"
+		);
 
 		switch (lerSelecao()) {
 			case 1:
@@ -56,9 +62,19 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaPoupanca(ContaPoupanca conta){
-		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", nome, saldo);
-		System.out.printf(
-				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
+		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", conta.getNome(), conta.getSaldo());
+		System.out.println(
+				"Digite um desses numeros:\n\n" +
+				"1. Sacar\n" + 
+				"2. Depositar\n" +
+				"3. Emitir extrato\n" +
+				"4. Transferencia\n" +
+				"5. Configurar PIX\n" +
+				"6. Pagar boleto\n" +
+				"7. Avancar no tempo\n\n" +
+				"0. Encerrar Sessao\n"
+		);
+		
 		switch (lerSelecao()) {
 			case 1: // Sacar
 				conta.sacar();
@@ -87,17 +103,25 @@ public class CaixaEletronico {
 				break;
 			default:
 				System.out.println("Input Invalido!");
-				menuContaCorrente(conta);
+				menuContaPoupanca(conta);
 				break;
 		}
 	}
 
 	public void menuContaCorrente(ContaCorrente conta) {
-		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", nome, saldo);
-		System.out.printf(
-				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
+		System.out.printf("Ola %s\nTipo de conta: Corrente\nSaldo: %s\n", conta.getNome(), conta.getSaldo());
+		System.out.println(
+				"Digite um desses numeros:\n\n" + 
+				"1. Sacar\n" +
+				"2. Depositar\n" +
+				"3. Emitir extrato\n" +
+				"4. Transferencia\n" +
+				"5. Configurar PIX\n" +
+				"6. Pagar boleto\n" +
+				"7. Avancar no tempo\n\n" +
+				"0. Encerrar Sessao\n"
+		);
 
-		//TODO Consertar esse switch que ta todo torto
 		switch (lerSelecao()) {
 			case 1: // Sacar
 				conta.sacar();

@@ -65,7 +65,6 @@ public final class Registrador {
 		try {
 			DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			LocalDate data = LocalDate.parse(stringData, formatoData);
-			System.out.println("Data: " + data);
 			return data;
 		} catch (Exception e) {
 			return lerData("Data invalida. Por favor, digite a data novamente");
