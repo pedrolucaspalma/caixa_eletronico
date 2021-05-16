@@ -82,7 +82,7 @@ public class CaixaEletronico {
 				"4. Transferencia\n" +
 				"5. Configurar PIX\n" +
 				"6. Pagar boleto\n" +
-				"7. Avancar no tempo\n\n" +
+				"7. Ativar conta salario\n\n" +
 				"0. Encerrar Sessao\n"
 		);
 
@@ -107,7 +107,16 @@ public class CaixaEletronico {
 				conta.adicionarPix(contas);
 				menuContaPoupanca(conta);
 				break;
-			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+			case 6: // Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+				conta.pagarBoleto(data);
+				break;
+			case 7:
+				if(conta.salario.getAtiva() == false){
+					conta.ativarContaSalario(conta);
+					System.out.println("Conta Salario ativada com sucesso.");
+				} else{
+					System.out.println("A conta ja e conta salario. Operacao encerrada.");
+				}
 				break;
 			case 0 :
 				menuContaPoupanca(conta);
@@ -176,7 +185,7 @@ public class CaixaEletronico {
 				"4. Transferencia\n" +
 				"5. Configurar PIX\n" +
 				"6. Pagar boleto\n" +
-				"7. Avancar no tempo\n\n" +
+				"7. Ativar conta salario\n\n" +
 				"0. Encerrar Sessao\n"
 		);
 
@@ -201,7 +210,16 @@ public class CaixaEletronico {
 				conta.adicionarPix(contas);
 				menuContaCorrente(conta);
 				break;
-			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+			case 6:
+				conta.pagarBoleto(data);
+				break;
+			case 7:
+				if(conta.salario.getAtiva() == false){
+					conta.ativarContaSalario(conta);
+					System.out.println("Conta Salario ativada com sucesso.");
+				} else{
+					System.out.println("A conta ja e conta salario. Operacao encerrada.");
+				}
 				break;
 			case 0 :
 				return;
