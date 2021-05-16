@@ -268,66 +268,74 @@ public abstract class Conta {
   }
 
   public void transferirPorPIX(Conta destinatario, float valor, LocalDate data) {
-    if ((saldo - valor) >= -3000.) {
-      saldo -= valor;
-      destinatario.setSaldo(destinatario.getSaldo() + valor);
-
-      Transacao transacaoRemetente = new Transacao(
+    if (this == destinatario) {
+      if ((saldo - valor) >= -3000.) {
+        saldo -= valor;
+        destinatario.setSaldo(destinatario.getSaldo() + valor);
+  
+        Transacao transacaoRemetente = new Transacao(
+            nome,
+            "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+            "Transferencia PIX",
+            destinatario.nome,
+            valor,
+            data
+        );
+  
+        Transacao transacaoDestinatario = new Transacao(
           nome,
-          "Transferencia PIX para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia PIX de " + destinatario.nome + "no valor de R$" + valor,
           "Transferencia PIX",
           destinatario.nome,
           valor,
           data
-      );
-
-      Transacao transacaoDestinatario = new Transacao(
-        nome,
-        "Transferencia PIX de " + destinatario.nome + "no valor de R$" + valor,
-        "Transferencia PIX",
-        destinatario.nome,
-        valor,
-        data
-      );
-
-      extrato.add(transacaoRemetente);
-      destinatario.extrato.add(transacaoDestinatario);
+        );
+  
+        extrato.add(transacaoRemetente);
+        destinatario.extrato.add(transacaoDestinatario);
+      } else {
+        System.out.printf("\nSaldo insuficiente\n\n");
+      }
     } else {
-      System.out.printf("\nSaldo insuficiente\n\n");
+      System.out.printf("\nOperacao invalida\n\n");
     }
   }
 
   public void transferirPorTED(Conta destinatario, float valor, LocalDate data) {
-    if ((saldo - valor) >= -3000.) {
-      System.out.println("SaldoR antes: " + saldo);
-      System.out.println("SaldoD antes: " + destinatario.getSaldo());
-      saldo -= valor;
-      destinatario.setSaldo(destinatario.getSaldo() + valor);
-      System.out.println("SaldoR depois: " + saldo);
-      System.out.println("SaldoD antes: " + destinatario.getSaldo());
-
-      Transacao transacaoRemetente = new Transacao(
+    if (this == destinatario) {
+      if ((saldo - valor) >= -3000.) {
+        System.out.println("SaldoR antes: " + saldo);
+        System.out.println("SaldoD antes: " + destinatario.getSaldo());
+        saldo -= valor;
+        destinatario.setSaldo(destinatario.getSaldo() + valor);
+        System.out.println("SaldoR depois: " + saldo);
+        System.out.println("SaldoD antes: " + destinatario.getSaldo());
+  
+        Transacao transacaoRemetente = new Transacao(
+            nome,
+            "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+            "Transferencia TED",
+            destinatario.nome,
+            valor,
+            data
+        );
+  
+        Transacao transacaoDestinatario = new Transacao(
           nome,
-          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
           "Transferencia TED",
           destinatario.nome,
           valor,
           data
-      );
-
-      Transacao transacaoDestinatario = new Transacao(
-        nome,
-        "Transferencia TED de " + destinatario.nome + "no valor de R$" + valor,
-        "Transferencia TED",
-        destinatario.nome,
-        valor,
-        data
-      );
-
-      extrato.add(transacaoRemetente);
-      destinatario.extrato.add(transacaoDestinatario);
+        );
+  
+        extrato.add(transacaoRemetente);
+        destinatario.extrato.add(transacaoDestinatario);
+      } else {
+        System.out.printf("\nSaldo insuficiente\n\n");
+      }
     } else {
-      System.out.printf("\nSaldo insuficiente\n\n");
+      System.out.printf("\nOperacao invalida\n\n");
     }
   }
 
