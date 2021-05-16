@@ -99,7 +99,7 @@ public abstract class Conta {
     this.saldo = saldo;
   }
   public void pagarBoleto(){
-    
+    registrador.ler
   }
   
   public void sacar(){
