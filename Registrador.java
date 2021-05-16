@@ -3,6 +3,21 @@ import java.util.Scanner;
 public final class Registrador {
 	private Scanner input = new Scanner(System.in);
 
+	public float lerFloat(String mensagem) {
+		System.out.printf("%s: ", mensagem);
+		String entrada = input.nextLine();
+
+		for (int i = 0; i < entrada.length(); i++) {
+			if (Character.isDigit(entrada.charAt(i))) {
+				continue;
+			} else {
+				return lerInt("Entrada invalida. Por favor, digite novamente");
+			}
+		}
+
+		return entrada.isEmpty() ? lerInt("Entrada invalida. Por favor, digite novamente") : Float.parseFloat(entrada);
+	}
+
 	public int lerInt(String mensagem) {
 		System.out.printf("%s: ", mensagem);
 		String entrada = input.nextLine();

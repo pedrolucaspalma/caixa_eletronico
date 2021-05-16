@@ -71,24 +71,20 @@ public class CaixaEletronico {
 				return;
         break;
 			case 2: // Depositar
-				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja depositar"));
-				float saldoAtual = conta.getSaldo();
-
-				conta.setSaldo(saldoAtual + valor);
-				System.out.println("Deposito feito com sucesso.");
 				menuContaCorrente(conta);
 				break;
 			case 3: // Emitir Extrato
 				break;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
-				input.lerString("Digite a agencia do remetente");
-				String contaRemetente = input.lerString("Digite a numero da conta do remetente");
-				int posRemetente = contas.acharContaCorrentePorNumeroDaConta(contaRemetente);
-				saldoAtual = contas.getContasCorrente().get(posRemetente).getSaldo();
-				valor = Float.parseFloat(input.lerValor("Digite o valor da tranferencia: "));
+			input.lerString("Digite a agencia do remetente");
+			String contaRemetente = input.lerString("Digite a numero da conta do remetente");
+			int posRemetente = contas.acharContaCorrentePorNumeroDaConta(contaRemetente);
+			saldoAtual = contas.getContasCorrente().get(posRemetente).getSaldo();
+			valor = Float.parseFloat(input.lerValor("Digite o valor da tranferencia: "));
 
-				contas.getContasCorrente().get(posRemetente).setSaldo(saldoAtual + valor);
-				System.out.println("Tranferencia feita com sucesso.");
+			contas.getContasCorrente().get(posRemetente).setSaldo(saldoAtual + valor);
+			System.out.println("Tranferencia feita com sucesso.");
+}
 				menuLogin();
 				break;
 			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências

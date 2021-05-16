@@ -99,7 +99,15 @@ public abstract class Conta {
     this.saldo = saldo;
   }
 
-  //Adicionar chamada de função para voltar pro menu
+  public void depositar(){
+    float valor = Float.parseFloat(registrador.lerInt("Digite o valor que deseja depositar:"));
+		float saldoAtual = conta.getSaldo();
+
+		conta.setSaldo(saldoAtual + valor);
+		System.out.println("Deposito feito com sucesso.");
+  }
+
+
   public void adicionarPix(){
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n");
 
