@@ -98,6 +98,9 @@ public abstract class Conta {
   public void setSaldo(float saldo) {
     this.saldo = saldo;
   }
+  public void pagarBoleto(){
+    
+  }
   
   public void sacar(){
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
@@ -186,5 +189,15 @@ public abstract class Conta {
   public void transferirPorTED(Conta conta, float valor) {
     saldo -= valor;
     conta.setSaldo(conta.getSaldo() + valor);
+  }
+
+  public void imprimirExtrato(){
+    for(Transacao i : extrato){
+      //Todo EXIBIR DETALHES DA TRANSACAO
+      // System.out.println("Data " +);
+      System.out.println("Tipo de operacao: " +i.getTipoOperacao());
+      System.out.println("Descricao: " +i.getDescricao());
+      System.out.println("Valor: " +i.getValor());
+    }
   }
 }
