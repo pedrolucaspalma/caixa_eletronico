@@ -98,10 +98,22 @@ public abstract class Conta {
   public void setSaldo(float saldo) {
     this.saldo = saldo;
   }
+  
+  public void sacar(){
+    float valor = registrador.lerFloat("Digite o valor que deseja sacar");
+    float saldoAtual = getSaldo();
+
+    if (saldoAtual - valor <= -3000) {
+      setSaldo(saldoAtual - valor);
+      System.out.println("Saque feito com sucesso.");
+    } else {
+      System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
+    }
+  }
 
   public void depositar(){
     float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
-		float saldoAtual = saldo;
+		float saldoAtual = getSaldo();
 
 		setSaldo(saldoAtual + valor);
 		System.out.println("Deposito feito com sucesso.");
