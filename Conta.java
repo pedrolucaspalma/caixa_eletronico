@@ -12,6 +12,7 @@ public abstract class Conta {
   protected String agencia;
   protected String numeroDaConta;
   protected ArrayList<String> pix;
+  protected ArrayList<String> historicoDeTransacoes;
   protected float saldo;
 
   public Conta(String nome, String cpf, String dataDeNascimento, String email, String telefone, String senha, String numeroDaConta, float saldo) {
@@ -143,6 +144,15 @@ public abstract class Conta {
               break;
       default: System.out.println("Erro, valor inválido. Operação abortada.");
               break;
+    }
+  }
+
+  public void transferir() {
+    System.out.printf("\nQual metodo voce deseja utilizar para fazer a tranferencia?\n\n1. PIX\n2.Agencia + Numero da Conta\n\n0. Cancelar\n\n");
+    switch(registrador.lerInt(".")) {
+      case 1:
+      case 2:
+      case 0:
     }
   }
 }
