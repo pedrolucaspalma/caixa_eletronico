@@ -1,9 +1,11 @@
-import java.util.Calendar;
+import java.time.LocalDate;
+
 
 public class CaixaEletronico {
 	private Registrador input = new Registrador();
 	private BancoDeContas contas = new BancoDeContas();
-	private Calendar calendar = Calendar.getInstance();
+	//TODO
+	//private LocalDate data = Calendar.getInstance();
 
 	public int lerSelecao() {
 		return input.lerInt(".");
@@ -48,8 +50,9 @@ public class CaixaEletronico {
 		}
 	}
 
+	//TODO
 	public void avancarTempo(int dias) {
-		calendar.add(Calendar.DATE, dias);
+
 	}
 
 	public void menuContaPoupanca(ContaPoupanca conta){

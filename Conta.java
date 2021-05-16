@@ -1,12 +1,12 @@
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 public abstract class Conta {
   Registrador registrador = new Registrador();
 
   protected String nome;
   protected String cpf;
-  protected Calendar dataDeNascimento;
+  protected LocalDate dataDeNascimento;
   protected String email;
   protected String telefone;
   protected String senha;
@@ -16,7 +16,7 @@ public abstract class Conta {
   protected ArrayList<Transacao> extrato = new ArrayList<Transacao>();
   protected float saldo;
 
-  public Conta(String nome, String cpf, Calendar dataDeNascimento, String email, String telefone, String senha,
+  public Conta(String nome, String cpf, LocalDate dataDeNascimento, String email, String telefone, String senha,
       String numeroDaConta, float saldo) {
     this.nome = nome;
     this.cpf = cpf;
@@ -45,11 +45,11 @@ public abstract class Conta {
     this.cpf = cpf;
   }
 
-  public Calendar getDataDeNascimento() {
+  public LocalDate getDataDeNascimento() {
     return dataDeNascimento;
   }
 
-  public void setDataDeNascimento(Calendar dataDeNascimento) {
+  public void setDataDeNascimento(LocalDate dataDeNascimento) {
     this.dataDeNascimento = dataDeNascimento;
   }
 
@@ -194,7 +194,7 @@ public abstract class Conta {
     }
   }
 
-  public void transferirPorPIX(Conta destinatario, float valor, Calendar data) {
+  public void transferirPorPIX(Conta destinatario, float valor, LocalDate data) {
     if ((saldo - valor) >= -3000.) {
       saldo -= valor;
       destinatario.setSaldo(destinatario.getSaldo() + valor);
