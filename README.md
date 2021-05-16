@@ -31,18 +31,33 @@ Tirar cheque especial da conta poupança
 ## Roteiro
 
 ### Registrador
-Classe que cuida de entrada, saída e verificação de dados. Nela temos métodos como lerInteiro, LerFloat e outros tipos de inputs que utilizamos com frequência durante o código.
+Classe que cuida de entrada e verificação de dados. Nela temos métodos como lerInteiro, LerFloat e outros tipos de inputs que utilizamos com frequência durante o código.
 
 ### Conta
-Classe abstrata que age como molde para ContaCorrente e ContaPoupança. Possui atributos !!LER ATRIBUTOS!! que serão comuns aos dois tipos de conta.
+Classe abstrata que age como molde para ContaCorrente e ContaPoupança. Possui atributos que serão comuns aos dois tipos de conta.
 
-A implementação de PIX foi feita como um arraylist de Strings. Caso a string inserida
+A implementação de PIX foi feita como um arraylist de Strings que é atributo de Conta. Caso a string inserida (CPF, Email, ou telefone) esteja nesse arraylist, ele é um pix daquela conta.
 
-A implementação de conta salário foi feita como um atributo na classe Conta. Esse atributo é composto de um objeto Salario que contém um booleano, um valor de pagamento e uma data de pagamento. Quando a conta (poupança ou corrente) é criada, esse objeto é inicado como "false, 0, dataAtual", e depois o objeto é atualizado quando o usuário decide de fato ativar a conta salário.
+Além dos gets e sets, a classe possui os métodos pagarBoleto(), sacar(), depositar(), adicionarPix(), transferirPorTed() e transferirPorPix(), imprimirExtrato(), ativarContaSalario(), atualizarSalario().
 
-Além dos gets e sets, a classe possui os métodos pagarBoleto(), sacar(), depositar(), adicionarPix(), transferirPorTed() e transferirPorPix(),
+#### Salario
+A implementação de conta salário foi feita como um atributo na classe Conta. Esse atributo é composto de um objeto Salario que contém um booleano, um valor de pagamento e uma data de pagamento. Quando a conta (poupança ou corrente) é criada, esse objeto é iniciado como "false, 0, dataAtual", e depois o objeto é atualizado quando o usuário decide de fato ativar a conta salário.
 
+#### Transacao
+    Os métodos sacar(), depositar(), adicionarPix(), transferirPorTed() e transferirPorPix() geram objetos Transacao quando chamados. Esses objetos são armazenados num arrayList de transações, que é iterado no imprimirExtrato()
 
+### TransacaoEmConta
+    Interface que dita os métodos get() que serão implementados na classe Transacao
+
+### ContaCorrente e ContaPoupança
+    Classes que herdam de Conta. Cada objeto contaPoupança ou contaCorrente representa uma conta diferente.
+
+### BancoDeContas
+    Classe que armazena todos os objetos ContaPoupança no arraylist contasPoupança e idem para contaCorrente.
+
+    Possui métodos de busca de contas por parâmetro (cpf, numero...) e métodos de abertura de conta
+### CaixaEletronico
+    Classe que lida com os menus e avança no tempo.
 ## Testes
 
 1. Adicionar uma conta corrente
