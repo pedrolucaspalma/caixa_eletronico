@@ -73,7 +73,7 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaPoupanca(ContaPoupanca conta){
-		System.out.printf("Ola %s\nTipo de conta: Poupanca\nSaldo: %s\n", conta.getNome(), conta.getSaldo());
+		System.out.printf("\nOla, %s\nTipo de conta: Poupanca\nSaldo: %s\n\n", conta.getNome(), conta.getSaldo());
 		System.out.println(
 				"Digite um desses numeros:\n\n" +
 				"1. Sacar\n" + 
@@ -176,7 +176,7 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaCorrente(ContaCorrente conta) {
-		System.out.printf("Ola %s\nTipo de conta: Corrente\nSaldo: %s\n", conta.getNome(), conta.getSaldo());
+		System.out.printf("\nOla, %s\nTipo de conta: Corrente\nSaldo: %s\n\n", conta.getNome(), conta.getSaldo());
 		System.out.println(
 				"Digite um desses numeros:\n\n" + 
 				"1. Sacar\n" +
