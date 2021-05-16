@@ -52,6 +52,35 @@ public class CaixaEletronico {
 		calendar.add(Calendar.DATE, dias);
 	}
 
+	public void menuContaPoupanca(ContaPoupanca conta){
+		System.out.printf(
+				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
+		switch (lerSelecao()) {
+			case 1: // Sacar
+				conta.sacar();
+				menuContaPoupanca(conta);
+				return;
+			case 2: // Depositar
+				conta.depositar();
+				menuContaPoupanca(conta);
+				break;
+			case 3: // Emitir Extrato
+				conta.imprimirExtrato();
+				menuContaPoupanca(conta);
+				break;
+			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
+				//TODO:Implementar transferencia
+				menuLogin();
+				break;
+			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
+				conta.adicionarPix(contas);
+				menuContaPoupanca(conta);
+				break;
+			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+				break;
+		}
+	}
+	
 	public void menuContaCorrente(ContaCorrente conta) {
 		System.out.printf(
 				"Digite um desses numeros:\n\n1. Sacar\n2. Depositar\n3. Emitir extrato\n4. Transferencia\n5. Configurar PIX\n6. Pagar boleto\n7. Avancar no tempo\n\n0. Encerrar Sessao\n");
