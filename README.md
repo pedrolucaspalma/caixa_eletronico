@@ -3,6 +3,7 @@
 ## TODO
 
 Tirar cheque especial da conta poupança
+Add mensagem de PIX cadastrado com sucesso
 
 ### DOING
 
