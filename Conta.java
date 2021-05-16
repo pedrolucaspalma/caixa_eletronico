@@ -116,6 +116,10 @@ public abstract class Conta {
 
     extrato.add(transacao);
   }
+
+  public ArrayList<String> getPix() {
+      return pix;
+  }
   
   public void sacar(){
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
@@ -200,9 +204,9 @@ public abstract class Conta {
     );
   }
 
-  public void transferirPorTED(Conta conta, float valor) {
+  public void transferirPorTED(Conta destinatario, float valor) {
     saldo -= valor;
-    conta.setSaldo(conta.getSaldo() + valor);
+    destinatario.setSaldo(destinatario.getSaldo() + valor);
 
     //TODO: Adicionar data
     Transacao transacao = new Transacao(
