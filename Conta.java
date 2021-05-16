@@ -130,7 +130,7 @@ public abstract class Conta {
 
     LocalDate dataDeVencimento = registrador.lerData("Digite a data de vencimento do boleto");
 
-    if (dataDeVencimento.isAfter(dataAtual)) {
+    if (dataDeVencimento.isBefore(dataAtual)) {
       Period periodoDeDias = Period.between(dataAtual, dataDeVencimento);
       int quantidadeDeDiasAposVencimento = periodoDeDias.getDays();
 
@@ -141,7 +141,7 @@ public abstract class Conta {
   
         Transacao transacao = new Transacao(
             nome, //Nome do pagador
-            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta,
+            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " com acrescimo de R$"+ (valorComMulta - valor) + " Totalizando R$" + valorComMulta,
             "Pagamento de boleto", //Tipo de transacao
             "N/A",//Destinatario do pagamento
             valorComMulta,//Valor pago
@@ -156,7 +156,7 @@ public abstract class Conta {
       }
 
       
-    } else{
+    } else {
       if (saldo - valor >= -3000) {
         saldo -= valor;
   
@@ -297,12 +297,8 @@ public abstract class Conta {
   public void transferirPorTED(Conta destinatario, float valor, LocalDate data) {
     if (this != destinatario) {
       if ((saldo - valor) >= -3000.) {
-        System.out.println("SaldoR antes: " + saldo);
-        System.out.println("SaldoD antes: " + destinatario.getSaldo());
         saldo -= valor;
         destinatario.setSaldo(destinatario.getSaldo() + valor);
-        System.out.println("SaldoR depois: " + saldo);
-        System.out.println("SaldoD antes: " + destinatario.getSaldo());
   
         Transacao transacaoRemetente = new Transacao(
             nome,
