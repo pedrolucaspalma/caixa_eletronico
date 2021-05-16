@@ -4,8 +4,6 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Conta {
-  Registrador registrador = new Registrador();
-
   protected String nome;
   protected String cpf;
   protected LocalDate dataDeNascimento;
@@ -121,6 +119,7 @@ public abstract class Conta {
 
   //TODO: Explicar o porque de nao termos criar um objeto boleto
   public void pagarBoleto(LocalDate dataAtual) {
+    Registrador registrador = new Registrador();
     String codigoDeBoleto = registrador.lerCodigoDeBoleto("Insira o codigo de boleto");
     Float valor = registrador.lerFloat("Insira o valor do boleto: ");
 
@@ -137,7 +136,7 @@ public abstract class Conta {
   
         Transacao transacao = new Transacao(
             nome, //Nome do pagador
-            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta, //Descricao da transacao (detalhes para usar no extrato)
+            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + "com acrescimo de R$"+ (valorComMulta - valor) + "Totalizando R$" + valorComMulta,
             "Pagamento de boleto", //Tipo de transacao
             "N/A",//Destinatario do pagamento
             valorComMulta,//Valor pago
@@ -157,14 +156,13 @@ public abstract class Conta {
         saldo -= valor;
   
         Transacao transacao = new Transacao(
-
-          nome,
-          "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa",
-          "Pagamento de boleto",
-          "N/A",
-          valor,
-          dataAtual
-          );
+            nome,
+            "Pagamento de boleto numero: " + codigoDeBoleto + " no valor de: R$" + valor + " .Sem acrescimo de multa",
+            "Pagamento de boleto",
+            "N/A",
+            valor,
+            dataAtual
+        );
   
         extrato.add(transacao);
         System.out.println("O boleto foi pago com sucesso.");
@@ -181,6 +179,7 @@ public abstract class Conta {
 
   public void sacar(LocalDate data) {
     //TODO: CORRIGIR LERFLOAT
+    Registrador registrador = new Registrador();
     float valor = registrador.lerFloat("Digite o valor que deseja sacar");
     float saldoAtual = getSaldo();
 
@@ -197,6 +196,7 @@ public abstract class Conta {
   }
 
   public void depositar(LocalDate data) {
+    Registrador registrador = new Registrador();
     float valor = registrador.lerFloat("Digite o valor que deseja depositar");
     float saldoAtual = getSaldo();
 
@@ -209,6 +209,7 @@ public abstract class Conta {
   }
 
   public void adicionarPix(BancoDeContas contas) {
+    Registrador registrador = new Registrador();
     int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n.");
 
     switch (input) {
@@ -326,6 +327,8 @@ public abstract class Conta {
   }
 
   public void imprimirExtrato() {
+    Registrador registrador = new Registrador();
+
     System.out.println("-------------------------Extratos-----------------------------------");
     for (Transacao i : extrato) {
       // Todo EXIBIR DETALHES DA TRANSACAO

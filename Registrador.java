@@ -28,7 +28,7 @@ public final class Registrador {
 		String entrada = input.nextLine();
 
 		for (int i = 0; i < entrada.length(); i++) {
-			if (Character.isDigit(entrada.charAt(i))) {
+			if (Character.isDigit(entrada.charAt(i)) || entrada.charAt(i) == '.') {
 				continue;
 			} else {
 				return lerFloat("Entrada invalida. Por favor, digite novamente");
