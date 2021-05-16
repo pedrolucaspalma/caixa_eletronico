@@ -382,12 +382,13 @@ public abstract class Conta {
     String antigaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     String novaDataString = antigaData.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-    LocalDate antigaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + antigaDataString.substring(1), formatoData);
-    LocalDate novaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + novaDataString.substring(1), formatoData);
+    LocalDate antigaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + antigaDataString.substring(2), formatoData);
+    LocalDate novaDataConvertida = LocalDate.parse(salario.getDiaDoPagamento() + novaDataString.substring(2), formatoData);
 
     Period periodoSalario = Period.between(antigaDataConvertida, novaDataConvertida);
 
     int meses = periodoSalario.getMonths();
+    System.out.println(meses);
 
     for (int i = 0; i < meses; i++) {
       saldo += salario.getPagamento();

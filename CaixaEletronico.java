@@ -61,7 +61,7 @@ public class CaixaEletronico {
 				"3. Abrir conta corrente\n" +
 				"4. Abrir conta poupanca\n" +
 				"5. Avancar no tempo\n\n" +
-				"0. Sair\n\n"
+				"0. Sair\n"
 		);
 
 		switch (lerSelecao()) {
@@ -82,6 +82,7 @@ public class CaixaEletronico {
 				menuLogin();
 				return;
 			case 5:
+				avancarTempo(registrador.lerInt("Digite o numero de dias que deseja avancar"));
 				menuLogin();
 				return;
 			case 0:
@@ -136,7 +137,6 @@ public class CaixaEletronico {
 				}
 				return;
 			case 0 :
-				menuContaPoupanca(conta);
 				return;
 			default:
 				System.out.println("Input Invalido!");
@@ -229,6 +229,7 @@ public class CaixaEletronico {
 				return;
 			case 6:
 				conta.pagarBoleto(data);
+				menuContaCorrente(conta);
 				return;
 			case 7:
 				if(conta.salario.getAtiva() == false){
@@ -237,6 +238,7 @@ public class CaixaEletronico {
 				} else{
 					System.out.println("A conta ja e conta salario. Operacao encerrada.");
 				}
+				menuContaCorrente(conta);
 				return;
 			case 0 :
 				return;
