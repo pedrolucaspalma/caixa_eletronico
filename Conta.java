@@ -185,7 +185,6 @@ public abstract class Conta {
       System.out.println("Valor ultrapassa o limite do cheque especial. Operação abortada");
     }
 
-    //TODO adicionar data da transacao
     Transacao transacao = new Transacao(nome, "Saque de R$" + valor, "Saque", "N/A", valor, data);
 
     extrato.add(transacao);
@@ -198,7 +197,6 @@ public abstract class Conta {
     setSaldo(saldoAtual + valor);
     System.out.println("Deposito feito com sucesso.");
 
-    //TODO adicionar data da transacao
     Transacao transacao = new Transacao(nome, "Deposito de R$" + valor, "Deposito", "N/A", valor, data);
 
     extrato.add(transacao);
