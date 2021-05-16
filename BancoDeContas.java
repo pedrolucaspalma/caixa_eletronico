@@ -157,4 +157,8 @@ public class BancoDeContas {
   public ArrayList<ContaCorrente> getContasCorrente() {
       return contasCorrente;
   }
+
+  public ArrayList<ContaPoupanca> getContasPoupanca() {
+    return contasPoupanca;
+}
 }
