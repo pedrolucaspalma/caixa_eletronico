@@ -4,12 +4,13 @@ public class Salario {
     private boolean ativa;
     private float pagamento;
     private LocalDate diaDoPagamento;
-
-    public Salario() {
-        ativa = false;
-        pagamento = 0;
-    }
     
+    public Salario(boolean ativa, float pagamento, LocalDate diaDoPagamento) {
+        this.ativa = ativa;
+        this.pagamento = pagamento;
+        this.diaDoPagamento = diaDoPagamento;
+    }
+
     public boolean getAtiva() {
         return ativa;
     }
@@ -33,6 +34,4 @@ public class Salario {
     public void setDiaDoPagamento(LocalDate diaDoPagamento) {
         this.diaDoPagamento = diaDoPagamento;
     }
-
-    
 }

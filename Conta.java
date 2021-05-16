@@ -39,6 +39,7 @@ public abstract class Conta {
     this.numeroDaConta = numeroDaConta;
     this.dataDeCriacao = dataDeCriacao;
     this.saldo = saldo;
+    this.salario = new Salario(false, 0, dataDeCriacao);
   }
 
   public String getNome() {
@@ -371,6 +372,10 @@ public abstract class Conta {
         System.out.println("Input Invalido");
         break;
     }
+  }
 
+  public void ativarContaSalario(Conta conta){
+    Registrador registrador = new Registrador();
+    salario = new Salario(true, registrador.lerFloat("Insira o seu pagamento"), registrador.lerData("Insira o dia da sua data de pagamento"));
   }
 }
