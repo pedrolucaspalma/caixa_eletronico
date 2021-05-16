@@ -62,7 +62,6 @@ public class CaixaEletronico {
 				conta.sacar();
 				menuContaCorrente(conta);
 				return;
-        		//break;
 			case 2: // Depositar
 				conta.depositar();
 				menuContaCorrente(conta);
@@ -70,25 +69,15 @@ public class CaixaEletronico {
 			case 3: // Emitir Extrato
 				break;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
-			input.lerString("Digite a agencia do remetente");
-			String contaRemetente = input.lerString("Digite a numero da conta do remetente");
-			int posRemetente = contas.acharContaCorrentePorNumeroDaConta(contaRemetente);
-			saldoAtual = contas.getContasCorrente().get(posRemetente).getSaldo();
-			valor = Float.parseFloat(input.lerValor("Digite o valor da tranferencia: "));
-
-			contas.getContasCorrente().get(posRemetente).setSaldo(saldoAtual + valor);
-			System.out.println("Tranferencia feita com sucesso.");
-}
+				//TODO:Implementar transferencia
 				menuLogin();
 				break;
-				case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
-					// (cpf, e-mail e telefone ou criando uma chave nova)
-					conta.adicionarPix();
-					menuContaCorrente(conta);
-					break;
-				case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data
-					// de vencimento)
-					break;
+			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
+				conta.adicionarPix();
+				menuContaCorrente(conta);
+				break;
+			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data de vencimento)
+				break;
 		}
 	}
 }
