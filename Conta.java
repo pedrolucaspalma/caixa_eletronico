@@ -416,7 +416,6 @@ public abstract class Conta {
     Period periodoSalario = Period.between(antigaDataConvertida, novaDataConvertida);
 
     int meses = periodoSalario.getMonths();
-    System.out.println(meses + (salario.getDiaDoPagamento() + antigaDataString.substring(2)) + (salario.getDiaDoPagamento() + novaDataString.substring(2)));
 
     for (int i = 0; i < meses; i++) {
       saldo += salario.getPagamento();
