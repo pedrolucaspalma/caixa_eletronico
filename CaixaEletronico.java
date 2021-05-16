@@ -26,6 +26,7 @@ public class CaixaEletronico {
 				contas.abrirContaPoupanca();
 				menuLogin();
 				break;
+			//TODO: avançarTempo();
 			case 5:
 				menuLogin();
 				break;
@@ -57,20 +58,12 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1: // Sacar
-				float valor = Float.parseFloat(input.lerValor("Digite o valor que deseja sacar"));
-				float saldoAtual = conta.getSaldo();
-
-				if (saldoAtual >= valor) {
-					conta.setSaldo(saldoAtual - valor);
-					System.out.println("Saque feito com sucesso.");
-				} else {
-					System.out.println("Valor indisponivel para o saque!");
-				}
-
+				conta.sacar();
 				menuContaCorrente(conta);
 				return;
-        break;
+        		//break;
 			case 2: // Depositar
+				conta.depositar();
 				menuContaCorrente(conta);
 				break;
 			case 3: // Emitir Extrato
@@ -87,14 +80,14 @@ public class CaixaEletronico {
 }
 				menuLogin();
 				break;
-			case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
+				case 5: // Configurar PIX ⇔ Definir qual informação será utilizada para transferências
 					// (cpf, e-mail e telefone ou criando uma chave nova)
 					conta.adicionarPix();
 					menuContaCorrente(conta);
 					break;
-			case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data
+				case 6: // TODO: Pagar boleto (Digitando o codigo de barras de 48 digitos, valor e data
 					// de vencimento)
-				break;
+					break;
 		}
 	}
 }
