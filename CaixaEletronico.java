@@ -156,38 +156,46 @@ public class CaixaEletronico {
 		switch(registrador.lerInt(".")) {
 			case 1: {
 				String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
-				Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
-
+				
 				int indexCC = contas.acharContaCorrentePorPIX(chavePIX);
 				int indexCP = contas.acharContaPoupancaPorPIX(chavePIX);
-
+				
 				if (indexCC != -1) {
+					Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
 					ContaCorrente destinatario = contas.getContasCorrente().get(indexCC);
 					conta.transferirPorPIX(destinatario, valor, data);
 				} else if (indexCP != -1) {
+					Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
 					ContaPoupanca destinatario = contas.getContasPoupanca().get(indexCP);
 					conta.transferirPorPIX(destinatario, valor, data);
 				} else {
 					System.out.println("Chave PIX nao encontrada");
 				}
-				break;
+				return;
 			}
 			case 2: {
-				String cpf = registrador.lerCPF("Digite o cpf do destinatario");
-				Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
-
-				int indexCC = contas.acharContaCorrentePorCPF(cpf);
-				int indexCP = contas.acharContaPoupancaPorCPF(cpf);
-
-				if (indexCC != -1) {
-					ContaCorrente destinatario = contas.getContasCorrente().get(indexCC);
-					conta.transferirPorTED(destinatario, valor, data);
-				} else if (indexCP != -1) {
-					ContaPoupanca destinatario = contas.getContasPoupanca().get(indexCP);
-					conta.transferirPorTED(destinatario, valor, data);
+				String agencia = registrador.lerString("Digite a agencia da conta do destinatario");
+				if (agencia.equals("0001")) {
+					String numeroDaConta = registrador.lerString("Digite o numero da conta do destinatario");
+					
+					int indexCC = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
+					int indexCP = contas.acharContaPoupancaPorNumeroDaConta(numeroDaConta);
+					
+					if (indexCC != -1) {
+						Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
+						ContaCorrente destinatario = contas.getContasCorrente().get(indexCC);
+						conta.transferirPorTED(destinatario, valor, data);
+					} else if (indexCP != -1) {
+						Float valor = registrador.lerFloat("Digite o valor que deseja transferir");
+						ContaPoupanca destinatario = contas.getContasPoupanca().get(indexCP);
+						conta.transferirPorTED(destinatario, valor, data);
+					} else {
+						System.out.println("\nNumero da conta nao encontrado\n");
+					}
 				} else {
-					System.out.println("cpf nao encontrada");
+					System.out.println("\nConta nao existente\n");
 				}
+				return;
 			}
 		}
 	}

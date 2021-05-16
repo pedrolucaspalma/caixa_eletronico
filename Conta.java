@@ -214,7 +214,7 @@ public abstract class Conta {
 
   public void adicionarPix(BancoDeContas contas) {
     Registrador registrador = new Registrador();
-    int input = registrador.lerInt("Insira o que será utilizado como chave:\n1-CPF \n2- Email\n3- Telefone\n.");
+    int input = registrador.lerInt("Insira o que será utilizado como chave:\n1- CPF \n2- Email\n3- Telefone\n.");
 
     switch (input) {
       case 1:
