@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class CaixaEletronico {
@@ -156,7 +157,7 @@ public class CaixaEletronico {
 		switch(registrador.lerInt(".")) {
 			case 1: {
 				String chavePIX = registrador.lerString("Digite a chave PIX do destinatario");
-				
+
 				int indexCC = contas.acharContaCorrentePorPIX(chavePIX);
 				int indexCP = contas.acharContaPoupancaPorPIX(chavePIX);
 				
@@ -201,7 +202,8 @@ public class CaixaEletronico {
 	}
 
 	public void menuContaCorrente(ContaCorrente conta) {
-		System.out.printf("\nOla, %s\nTipo de conta: Corrente\nSaldo: %s\n\n", conta.getNome(), conta.getSaldo());
+		DecimalFormat formatacaoDecimal = new DecimalFormat("0.00");
+		System.out.printf("\nOla, %s\nTipo de conta: Corrente\nSaldo: %s\n\n", conta.getNome(), formatacaoDecimal.format(conta.getSaldo()));
 		System.out.println(
 				"Digite um desses numeros:\n\n" + 
 				"1. Sacar\n" +
