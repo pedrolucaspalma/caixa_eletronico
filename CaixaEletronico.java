@@ -15,18 +15,7 @@ public class CaixaEletronico {
 
 		switch (lerSelecao()) {
 			case 1:
-				//TODO: Mover para um metodo "login"
-				String numeroDaConta = input.lerString("Digite o numero da conta");
-				String senha = input.lerString("Digite a sua senha");
-
-				int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
-
-				if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
-					menuContaCorrente(contas.getContasCorrente().get(posConta));
-				} else {
-					System.out.printf("\nDados invalidos\n\n");
-				}
-
+				login();
 				menuLogin();
 				break;
 			case 3:
@@ -42,6 +31,19 @@ public class CaixaEletronico {
 				break;
 			case 0:
 				return;
+		}
+	}
+
+	public void login() {
+		String numeroDaConta = input.lerString("Digite o numero da conta");
+		String senha = input.lerString("Digite a sua senha");
+
+		int posConta = contas.acharContaCorrentePorNumeroDaConta(numeroDaConta);
+
+		if (posConta != -1 && contas.getContasCorrente().get(posConta).senha.equals(senha)) {
+			menuContaCorrente(contas.getContasCorrente().get(posConta));
+		} else {
+			System.out.printf("\nDados invalidos\n\n");
 		}
 	}
 
