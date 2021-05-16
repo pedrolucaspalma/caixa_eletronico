@@ -165,7 +165,6 @@ public abstract class Conta {
   }
 
   public void transferirPorPIX(Conta destinatario, float valor, Calendar data) {
-    //TODO: Adicionar ao arrayList de transações de quem transfere e ao de quem recebe.
     saldo -= valor;
     destinatario.setSaldo(destinatario.getSaldo() + valor);
 
@@ -184,5 +183,14 @@ public abstract class Conta {
   public void transferirPorTED(Conta conta, float valor) {
     saldo -= valor;
     conta.setSaldo(conta.getSaldo() + valor);
+
+    //TODO: Adicionar data
+    Transacao transacao = new Transacao(
+          nome,
+          "Transferencia TED para " + destinatario.nome + "no valor de R$" + valor,
+          "Transferencia TED",
+          destinatario.nome,
+          valor
+    );
   }
 }
