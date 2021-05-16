@@ -67,6 +67,8 @@ public class CaixaEletronico {
 				menuContaCorrente(conta);
 				break;
 			case 3: // Emitir Extrato
+				conta.imprimirExtrato();
+				menuContaCorrente(conta);
 				break;
 			case 4: // Fazer transferencia atraves de (Agencia ∧ Conta) ∨ PIX
 				//TODO:Implementar transferencia

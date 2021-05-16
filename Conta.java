@@ -117,7 +117,6 @@ public abstract class Conta {
     } else {
       System.out.println("O pagamento ultrapassaria seu limite de cheque especial. Transacao cancelada");
     }
-
   }
 
   public ArrayList<String> getPix() {
@@ -226,12 +225,15 @@ public abstract class Conta {
   }
 
   public void imprimirExtrato() {
+    System.out.println("-------------------------Extratos-----------------------------------");
     for (Transacao i : extrato) {
       // Todo EXIBIR DETALHES DA TRANSACAO
+      System.out.println("------------------------------------------------------------------");
       // System.out.println("Data " +);
       System.out.println("Tipo de operacao: " + i.getTipoOperacao());
       System.out.println("Descricao: " + i.getDescricao());
       System.out.println("Valor: " + i.getValor());
+      System.out.println("-------------------------------------------------------------------");
     }
   }
 }
