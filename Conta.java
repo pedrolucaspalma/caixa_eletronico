@@ -99,7 +99,7 @@ public abstract class Conta {
   }
 
   public void depositar(){
-    float valor = Float.parseFloat(registrador.lerInt("Digite o valor que deseja depositar:"));
+    float valor = registrador.lerFloat("Digite o valor que deseja depositar:");
 		float saldoAtual = conta.getSaldo();
 
 		conta.setSaldo(saldoAtual + valor);
