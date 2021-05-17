@@ -74,15 +74,9 @@ A implementação de conta salário foi feita como um atributo na classe Conta. 
 
     Entrar na conta poupança
 
-    Ativar o pix (CPF) (vai dar erro)
-
-    Ativar o pix (Telefone)
-
     Depositar 500 reais
 
-    Sacar 100 reais
-
-    Enviar pix para conta corrente de 500 reais (Digitar o CPF) (Conta ficará no -100 reais)
+    Enviar pix para conta corrente de 500 reais (Digitar o CPF)
 
     Sacar 3000 (vai dar erro)
 
